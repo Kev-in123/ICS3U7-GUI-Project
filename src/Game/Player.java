@@ -123,8 +123,6 @@ public class Player extends World implements KeyListener {
   // not used
   // only here so the compiler doesn't complain
 
-
-
   /**
    * called when a key is released
    * 

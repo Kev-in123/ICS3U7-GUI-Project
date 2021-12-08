@@ -6,6 +6,7 @@ import Game.Game;
 
 public class Main {
   JFrame frame;
+
   // constructer
   Main(JFrame frame) {
     this.frame = frame;

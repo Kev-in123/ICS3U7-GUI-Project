@@ -4,12 +4,16 @@ import java.awt.*;
 import javax.swing.JFrame;
 
 public class Game extends JFrame {
+  // creates a new world
+  World world = new World();
+  public static void main(String[] args) {
+    new Game();
+  }
+
   // Constructor
   public Game() {
-    // creates a new world
-    World w = new World();
     // sets the size of the world
-    setSize(w.worldWidth, w.worldHeight);
+    setSize(world.worldWidth, world.worldHeight);
     // sets an empty layout
     setLayout(null);
     // makes the window visible
@@ -25,14 +29,6 @@ public class Game extends JFrame {
    */
   @Override
   public void paint(Graphics g) {
-    // calls the paint method in the JFrame class
-    super.paint(g);
-    // breates instances of the ground, player, and platform
-    Ground ground = new Ground();
-    Player player = new Player();
-    Platform platform = new Platform(100, 100, 200, 10);
-    ground.paint(g);
-    platform.paint(g);
-    player.paint(g);
+    world.paint(g);
   }
 }
