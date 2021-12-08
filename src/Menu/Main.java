@@ -1,7 +1,8 @@
 package Menu;
 
-import java.awt.event.*;
+import java.awt.*;
 import javax.swing.*;
+import java.awt.event.*;
 import Game.Game;
 
 public class Main {
@@ -18,17 +19,19 @@ public class Main {
     frame.setVisible(true);
     // add a button
     JButton b = new JButton("Start");
-    // set the size and location
+    // set the size and location of the button
     b.setBounds(50, 100, 95, 30);
     // set the action
     b.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
-        new Game();
+        Game game = new Game(frame);
+        Graphics g = frame.getGraphics();
+        game.paint(g);
+        b.setVisible(false);
       }
     });
     // add the button to the window
     frame.add(b);
-
   }
 
   public static void main(String[] args) {
