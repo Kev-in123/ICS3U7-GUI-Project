@@ -3,19 +3,17 @@ package Game;
 import java.awt.*;
 import javax.swing.JFrame;
 
-public class Game {
-  JFrame frame;
+public class Game extends JFrame {
   // Constructor
-  public Game(JFrame frame) {
-    this.frame = frame;
+  public Game() {
     // creates a new world
     World w = new World();
     // sets the size of the world
-    this.frame.setSize(w.worldWidth, w.worldHeight);
+    setSize(w.worldWidth, w.worldHeight);
     // sets an empty layout
-    this.frame.setLayout(null);
+    setLayout(null);
     // makes the window visible
-    this.frame.setVisible(true);
+    setVisible(true);
   }
 
   // Overrides the paint method
@@ -25,9 +23,10 @@ public class Game {
    * @param Graphics g
    * @return N/A
    */
+  @Override
   public void paint(Graphics g) {
     // calls the paint method in the JFrame class
-    this.frame.paint(g);
+    super.paint(g);
     // breates instances of the ground, player, and platform
     Ground ground = new Ground();
     Player player = new Player();

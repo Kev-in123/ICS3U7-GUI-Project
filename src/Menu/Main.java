@@ -4,15 +4,17 @@ import java.awt.event.*;
 import javax.swing.*;
 import Game.Game;
 
-public class Main extends JFrame {
+public class Main {
+  JFrame frame;
   // constructer
-  Main() {
+  Main(JFrame frame) {
+    this.frame = frame;
     // set the window size
-    setSize(1535, 800);
+    frame.setSize(1535, 800);
     // set the window layout
-    setLayout(null);
+    frame.setLayout(null);
     // makes the window visible
-    setVisible(true);
+    frame.setVisible(true);
     // add a button
     JButton b = new JButton("Start");
     // set the size
@@ -20,14 +22,16 @@ public class Main extends JFrame {
     // set the action
     b.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
+        new Game();
       }
     });
     // add the button to the window
-    add(b);
+    frame.add(b);
 
   }
 
   public static void main(String[] args) {
-    new Main();
+    JFrame frame = new JFrame("Game");
+    new Main(frame);
   }
 }
