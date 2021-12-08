@@ -18,7 +18,7 @@ public class Main {
     frame.setVisible(true);
     // add a button
     JButton b = new JButton("Start");
-    // set the size
+    // set the size and location
     b.setBounds(50, 100, 95, 30);
     // set the action
     b.addActionListener(new ActionListener() {
