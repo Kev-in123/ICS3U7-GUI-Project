@@ -3,39 +3,40 @@ package Menu;
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
-import Game.Game;
+import Game.*;
 
-public class Main {
-  JFrame frame;
+public class Main extends JFrame {
+  Game game;
+  Player player;
 
   // constructer
-  Main(JFrame frame) {
-    this.frame = frame;
+  Main() {
     // set the window size
-    frame.setSize(1535, 800);
+    setSize(1535, 800);
     // set the window layout
-    frame.setLayout(null);
+    setLayout(null);
     // makes the window visible
-    frame.setVisible(true);
+    setVisible(true);
     // add a button
-    JButton b = new JButton("Start");
+    JButton b = new JButton("Game");
     // set the size and location of the button
-    b.setBounds(50, 100, 95, 30);
+    b.setBounds(400, 600, 95, 30);
     // set the action
     b.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
-        Game game = new Game(frame);
-        Graphics g = frame.getGraphics();
+        game = new Game(Main.this);
+        player = new Player();
+        Graphics g = getGraphics();
         game.paint(g);
+        addKeyListener(player);
         b.setVisible(false);
       }
     });
     // add the button to the window
-    frame.add(b);
+    add(b);
   }
 
   public static void main(String[] args) {
-    JFrame frame = new JFrame("Game");
-    new Main(frame);
+    new Main();
   }
 }
