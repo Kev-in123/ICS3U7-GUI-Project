@@ -1,19 +1,19 @@
 package Game;
 
 import java.awt.*;
+import Main.*;
 
 public class World {
   // variables used throughout the class
-  protected int worldHeight = 800;
-  protected int worldWidth = 1535;
+  private int worldHeight = Main.HEIGHT;
+  private int worldWidth = Main.WIDTH;
 
-  public void paint(final Graphics g) {
-    // breates instances of the ground, player, and platform
-    Ground ground = new Ground();
+  public void paint(Graphics g) {
+    // creates instances of the ground, player, and platform
     Player player = new Player();
-    Platform platform = new Platform(100, 100, 200, 10);
-    ground.paint(g);
-    platform.paint(g);
+    DrawMap draw = new DrawMap();
+    int level = player.getLevel();
+    draw.draw_world(g, level);
     player.paint(g);
   }
 
@@ -21,7 +21,7 @@ public class World {
    * returns the height of the world
    * 
    * @param N/A
-   * @return worldHeight
+   * @return the height of the world
    */
   public int getHeight() {
     return worldHeight;
@@ -31,7 +31,7 @@ public class World {
    * returns the width of the world
    * 
    * @param N/A
-   * @return worldWidth
+   * @return the width of the world
    */
   public int getWidth() {
     return worldWidth;

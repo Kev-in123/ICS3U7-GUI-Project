@@ -10,21 +10,19 @@ public class Game {
   // Constructor
   public Game(JFrame frame) {
     // sets the size of the world
-    frame.setSize(world.worldWidth, world.worldHeight);
+    frame.setSize(world.getWidth(), world.getHeight());
     // sets an empty layout
     frame.setLayout(null);
     // makes the window visible
     frame.setVisible(true);
   }
 
-  // Overrides the paint method
   /**
    * Used to draw the world
    * 
-   * @param Graphics g
+   * @param a graphics class
    * @return N/A
    */
-  //@Override
   public void paint(Graphics g) {
     world.paint(g);
   }

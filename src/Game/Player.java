@@ -5,20 +5,23 @@ import java.awt.event.*;
 
 public class Player extends World implements KeyListener {
   // variables used throughout the class
-  private int height = 120;
-  private int width = 60;
-  private int xpos = 150;
-  private int ypos = 650;
+  private int height = 30;
+  private int width = 30;
+  private int startx = 150;
+  private int starty = 150;
+  private int xpos = startx;
+  private int ypos = starty;
   private int velocity = 3;
   private int direction = 1;
+  private int level = 1;
 
   /**
    * draws the player
    * 
-   * @param Graphics g
+   * @param a graphics class
    * @return N/A
    */
-  public void paint(final Graphics g) {
+  public void paint(Graphics g) {
     // sets the color of the player
     g.setColor(Color.BLUE);
     // draws the player
@@ -38,30 +41,122 @@ public class Player extends World implements KeyListener {
   }
 
   /**
-   * updates the player's x position
+   * checks if the player is on a block, used to check if the player can jump
    * 
-   * @param int amt
-   * @return N/A
+   * @param Player p
+   * @return boolean
    */
-  public void updateXPos(int amt) {
-    xpos += amt;
+  public boolean on_block(Block b) {
+    if (b.type != 'b') {
+      if (b.type == 's' || b.type == 'l') {
+        respwan();
+      } else if (b.type == '0') {
+        return false;
+      } else if (b.type == 'p') {
+        nextLevel();
+      }
+    }
+    // gets the players position
+    int playerBottom = getYPos() + getPlayerHeight();
+    int playerLeft = getXPos();
+    int playerRight = getXPos() + getPlayerWidth();
+
+    // checks if the player is on/over the block
+    boolean inBoundary = playerLeft > b.getXPos() && playerRight < b.getXPos() + b.getXPos();
+    // checks if the player is on the block
+    boolean touching = playerBottom == b.getYPos();
+
+    return inBoundary && touching;
   }
 
   /**
-   * updates the player's y position
+   * checks if the player is right under a block, used for collision detection
    * 
-   * @param int amt
-   * @return N/A
+   * @param Player p
+   * @return boolean
    */
-  public void updateYPos(int amt) {
-    ypos += amt;
+  public boolean under_block(Block b) {
+    if (b.type != 'b') {
+      if (b.type == 's' || b.type == 'l') {
+        respwan();
+      } else if (b.type == '0') {
+        return false;
+      } else if (b.type == 'p') {
+        nextLevel();
+      }
+    }
+    // gets the players position
+    int playerTop = getYPos();
+    int playerLeft = getXPos();
+    int playerRight = getXPos() + getPlayerWidth();
+
+    // checks if the player is on/over the block
+    boolean inBoundary = playerLeft > b.getXPos() && playerRight < b.getXPos() + b.getXPos();
+    // checks if the player is on the block
+    boolean touching = playerTop == b.getYPos();
+
+    return inBoundary && touching;
+  }
+
+  /**
+   * checks if the player is directly to the left of a block, used for collision
+   * detection
+   * 
+   * @param Player p
+   * @return if the player is touching a block
+   */
+  public boolean left_block(Block b) {
+    if (b.type != 'b') {
+      if (b.type == 's' || b.type == 'l') {
+        respwan();
+      } else if (b.type == '0') {
+        return false;
+      } else if (b.type == 'p') {
+        nextLevel();
+      }
+    }
+
+    // gets the players position
+    int playerLeft = getXPos();
+
+    // checks if the player is within the boundaries of the block
+    boolean left = playerLeft == b.getXPos() && (under_block(b) || on_block(b));
+
+    return left && (under_block(b) || on_block(b));
+  }
+
+  /**
+   * checks if the player is directly to the right of a block, used for collision
+   * detection
+   * 
+   * @param Player p
+   * @return if the player is touching a block
+   */
+  public boolean right_block(Block b) {
+    if (b.type != 'b') {
+      if (b.type == 's' || b.type == 'l') {
+        respwan();
+      } else if (b.type == '0') {
+        return false;
+      } else if (b.type == 'p') {
+        nextLevel();
+      }
+    }
+
+    // gets the players position
+    int playerRight = getXPos() + getPlayerWidth();
+
+    // checks if the player is within the boundaries of the block
+    boolean right = playerRight == b.getXPos() && (under_block(b) || on_block(b));
+
+    return right && (under_block(b) || on_block(b));
   }
 
   /**
    * returns the player's height
    * 
    * @param N/A
-   * @return height
+   * @return the players height
    */
   public int getPlayerHeight() {
     return height;
@@ -71,7 +166,7 @@ public class Player extends World implements KeyListener {
    * returns the player's width
    * 
    * @param N/A
-   * @return width
+   * @return the players width
    */
   public int getPlayerWidth() {
     return width;
@@ -81,7 +176,7 @@ public class Player extends World implements KeyListener {
    * returns the player's x position
    * 
    * @param N/A
-   * @return xpos
+   * @return the players x position
    */
   public int getXPos() {
     return xpos;
@@ -91,16 +186,48 @@ public class Player extends World implements KeyListener {
    * returns the player's y position
    * 
    * @param N/A
-   * @return ypos
+   * @return the players x position
    */
   public int getYPos() {
     return ypos;
   }
 
   /**
+   * respwans the player
+   * 
+   * @param a graphics class
+   * @return N/A
+   */
+  public void respwan() {
+    // reset the location of the player
+    xpos = startx;
+    ypos = starty;
+  }
+
+  /**
+   * returns the current level the player is on
+   * 
+   * @param N/A
+   * @return the current level
+   */
+  public int getLevel() {
+    return level;
+  }
+
+  /**
+   * updates the level
+   * 
+   * @param N/A
+   * @return N/A
+   */
+  public void nextLevel() {
+    level++;
+  }
+
+  /**
    * called when a key is pressed
    * 
-   * @param KeyEvent key
+   * @param a key event listener
    * @return N/A
    */
   public void keyPressed(KeyEvent key) {
@@ -126,7 +253,7 @@ public class Player extends World implements KeyListener {
   /**
    * called when a key is released
    * 
-   * @param KeyEvent key
+   * @param a key event listener
    * @return N/A
    */
   public void keyReleased(KeyEvent key) {
@@ -135,7 +262,7 @@ public class Player extends World implements KeyListener {
   /**
    * called when a key is typed
    * 
-   * @param KeyEvent key
+   * @param a key event listener
    * @return N/A
    */
   public void keyTyped(KeyEvent key) {
