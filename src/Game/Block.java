@@ -19,13 +19,6 @@ public class Block {
     this.type = type;
   }
 
-  // constructor, used to determine the position and size of the platform
-  Block(int x, int y) {
-    this.xpos = x;
-    this.ypos = y;
-    this.type = 'b';
-  }
-
   /**
    * returns the block's x position
    * 
