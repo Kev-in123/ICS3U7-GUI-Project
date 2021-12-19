@@ -1,75 +1,55 @@
 package Game;
 
-import java.awt.*;
+import java.awt.Graphics;
 
-public class Block {
+import Levels.LoadLevel;
+
+public class DrawMap {
   // variables used throughout the class
   int xpos;
   int ypos;
-  char type;
-  int width = 30;
-  int height = 30;
-
-
-
-  // constructor, used to determine the position, size, and type of the platform
-  Block(int x, int y, char type) {
-    this.xpos = x;
-    this.ypos = y;
-    this.type = type;
-  }
 
   /**
-   * returns the block's x position
+   * loads the world
    * 
-   * @param N/A
-   * @return the x position of the block
-   */
-  public int getXPos() {
-    return this.xpos;
-  }
-
-  /**
-   * returns the block's y position
-   * 
-   * @param N/A
-   * @return the y position of the block
-   */
-  public int getYPos() {
-    return this.ypos;
-  }
-
-  /**
-   * draws the platform
-   * 
-   * @param Graphics g
+   * @param a graphics class, the level the user is on
    * @return N/A
    */
-  public void draw(Graphics g) {
-    Color color = Color.BLACK;
-    if (this.type != 'b') {
-      if (this.type == 'p') {
-        color = Color.PINK;
-      } else if (this.type == 'l') {
-        color = Color.ORANGE;
-      } else if (this.type == 's') {
-        color = Color.DARK_GRAY;
-      } else if (this.type == '0') {
-        color = Color.WHITE;
+  public String[] load_level(Graphics g, int level) {
+    LoadLevel l = new LoadLevel();
+    String[][] levels = l.getLevels();
+    return levels[level - 1];
+  }
+
+  /**
+   * draws the world
+   * 
+   * @param a graphics class, the level the user is on
+   * @return N/A
+   */
+  public void draw_world(Graphics g, int level) {
+    String[] LEVEL = load_level(g, level);
+    int x = 0;
+    int y = 30;
+    for (int i = 0; i < 400; i++) {
+      Block b = new Block(x, y, LEVEL[i].charAt(0));
+      b.draw(g);
+      x += 30;
+      if (LEVEL[i].charAt(0) == 'e') {
+        y += 30;
+        x = 0;
       }
     }
-    // set the block colour
-    g.setColor(color);
-    // make sure the type isn't a spike
-    if (this.type != 's') {
-      // draw a rectangle to represent the block
-      g.fillRect(this.xpos, this.ypos, width, height);
-      return;
-    }
-    // draws a triangle
-    int[] xpoints = { this.xpos, this.xpos + 15, this.xpos + 30 };
-    int[] ypoints = { this.ypos, this.ypos + 30, this.ypos + 30 };
-    g.fillPolygon(xpoints, ypoints, 3);
+  }
 
+  /**
+   * draws the map
+   * 
+   * @param a graphics class, the level the user is on
+   * @return N/A
+   */
+  public void draw_map(Graphics g, int level) {
+    // draws the world
+    this.draw_world(g, level);
   }
 }
