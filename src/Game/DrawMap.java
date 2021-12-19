@@ -29,18 +29,15 @@ public class DrawMap {
    */
   public void draw_world(Graphics g, int level) {
     String[] LEVEL = load_level(g, level);
-    int x = 30;
-    int y = 0;
+    int x = 0;
+    int y = 30;
     for (int i = 0; i < 400; i++) {
-      System.out.println("(" + x + ", " + y + ") " + i + ": " + LEVEL[i]);
-
       Block b = new Block(x, y, LEVEL[i].charAt(0));
       b.draw(g);
-
       x += 30;
-      if (i % 20 == 0) {
+      if (LEVEL[i].charAt(0) == 'e') {
         y += 30;
-        x = 30;
+        x = 0;
       }
     }
   }
