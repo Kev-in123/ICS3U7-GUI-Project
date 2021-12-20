@@ -20,8 +20,8 @@ public class Main extends JFrame {
     final Graphics g = getGraphics();
     // set the window size
     setSize(WIDTH, HEIGHT);
-    // set the window layout
-    setLayout(null);
+    // set the close operation
+    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     // makes the window visible
     setVisible(true);
     // add the game button
