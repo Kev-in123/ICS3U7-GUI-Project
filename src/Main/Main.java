@@ -22,6 +22,8 @@ public class Main extends JFrame {
     setSize(WIDTH, HEIGHT);
     // set the close operation
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    // set the layout
+    setLayout(null);
     // makes the window visible
     setVisible(true);
     // add the game button
