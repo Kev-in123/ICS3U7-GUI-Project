@@ -41,15 +41,4 @@ public class DrawMap {
       }
     }
   }
-
-  /**
-   * draws the map
-   * 
-   * @param a graphics class, the level the user is on
-   * @return N/A
-   */
-  public void draw_map(Graphics g, int level) {
-    // draws the world
-    this.draw_world(g, level);
-  }
 }
