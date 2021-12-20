@@ -31,7 +31,7 @@ public class DrawMap {
     String[] LEVEL = load_level(g, level);
     int x = 0;
     int y = 30;
-    for (int i = 0; i < 400; i++) {
+    for (int i = 0; i < LEVEL.length; i++) {
       Block b = new Block(x, y, LEVEL[i].charAt(0));
       b.draw(g);
       x += 30;

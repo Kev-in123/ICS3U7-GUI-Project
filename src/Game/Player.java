@@ -1,9 +1,10 @@
 package Game;
 
+import java.io.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class Player extends World implements KeyListener {
+public class Player implements KeyListener {
   // variables used throughout the class
   private int height = 30;
   private int width = 30;
@@ -13,7 +14,21 @@ public class Player extends World implements KeyListener {
   private int ypos = starty;
   private int velocity = 3;
   private int direction = 1;
-  private int level = 1;
+  private int level;
+  Graphics g;
+
+  public Player(Graphics gr) {
+    try {
+      FileReader file = new FileReader("data.txt");
+      BufferedReader in = new BufferedReader(file);
+      String line = in.readLine();
+      level = Integer.parseInt(line);
+      in.close();
+    } catch (IOException e) {
+      System.out.println("Couldn't read the file");
+    }
+    g = gr;
+  }
 
   /**
    * draws the player
@@ -21,7 +36,7 @@ public class Player extends World implements KeyListener {
    * @param a graphics class
    * @return N/A
    */
-  public void paint(Graphics g) {
+  public void paint() {
     // sets the color of the player
     g.setColor(Color.BLUE);
     // draws the player
@@ -245,6 +260,7 @@ public class Player extends World implements KeyListener {
       xpos += velocity;
       direction = -1;
     }
+    paint();
   }
 
   // not used
@@ -256,6 +272,7 @@ public class Player extends World implements KeyListener {
    * @param a key event listener
    * @return N/A
    */
+
   public void keyReleased(KeyEvent key) {
   }
 
@@ -265,6 +282,8 @@ public class Player extends World implements KeyListener {
    * @param a key event listener
    * @return N/A
    */
+
   public void keyTyped(KeyEvent key) {
   }
+
 }

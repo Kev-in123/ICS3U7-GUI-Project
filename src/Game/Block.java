@@ -10,8 +10,6 @@ public class Block {
   int width = 30;
   int height = 30;
 
-
-
   // constructor, used to determine the position, size, and type of the platform
   Block(int x, int y, char type) {
     this.xpos = x;
