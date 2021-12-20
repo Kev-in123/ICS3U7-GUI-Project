@@ -1,4 +1,4 @@
-package Menu;
+package Main;
 
 public class TitleScreen {
 	
