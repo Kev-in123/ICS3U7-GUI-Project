@@ -35,6 +35,7 @@ public class UI {
 		titleNameLabel.setFont(titleFont);
 		titleNamePanel.add(titleNameLabel);
 		
+		//button
 		startButtonPanel = new JPanel();
 		startButtonPanel.setBounds(300, 400, 200, 100);
 		startButtonPanel.setBackground(Color.cyan);
