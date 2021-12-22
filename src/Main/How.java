@@ -20,7 +20,7 @@ public class How extends JPanel {
     JLabel text = new JLabel(
         "<html>- Arrow keys to move<br>- Avoid spikes and lava<br>- Get to the portal to reach the next level");
     // set the text colour
-    text.setForeground(Color.BLACK);
+    text.setForeground(Color.WHITE);
     // set the font and the size
     text.setFont(new Font("Times New Roman", Font.PLAIN, 30));
     // add the text
