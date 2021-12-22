@@ -52,7 +52,7 @@ public class Main extends JFrame {
     backButton.setBounds(100, 335, 105, 30);
     // set the size and location of the title
     title.setBounds(300, 200, 2000, 300);
-    title.setFont(new Font("Times New Roman", Font.PLAIN, 50));
+    title.setFont(new Font("Consolas", Font.PLAIN, 50));
     title.setForeground(Color.WHITE);
 
     // set the action for the game button
