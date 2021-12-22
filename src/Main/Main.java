@@ -63,12 +63,12 @@ public class Main extends JFrame {
     // set the action for the how to play button
     howButton.addActionListener(new ActionListener() {
       public void actionPerformed(final ActionEvent e) {
+        add(backButton);
         remove(gameButton);
         remove(howButton);
         remove(exitButton);
         how = new How();
         add(how);
-        add(backButton);
       }
     });
 
