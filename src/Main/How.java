@@ -11,7 +11,7 @@ public class How extends JPanel {
     setBackground(new Color(0, 0, 128));
     // title text
     JLabel title = new JLabel("How To Play");
-    title.setForeground(Color.BLACK);
+    title.setForeground(Color.WHITE);
     // set the font and the size
     title.setFont(new Font("Times New Roman", Font.PLAIN, 50));
     // add the text
