@@ -50,9 +50,9 @@ public class Main extends JFrame {
     exitButton.setBounds(100, 370, 105, 30);
     // set the size and location of the back button
     backButton.setBounds(100, 335, 105, 30);
-    // set the size and location of the title
+    // set the size, location, font, and colour of the title
     title.setBounds(300, 200, 2000, 300);
-    title.setFont(new Font("Consolas", Font.PLAIN, 50));
+    title.setFont(new Font("Consolas", Font.BOLD | Font.ITALIC, 50));
     title.setForeground(Color.WHITE);
 
     // set the action for the game button
