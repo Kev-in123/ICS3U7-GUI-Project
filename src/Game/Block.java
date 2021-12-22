@@ -38,7 +38,7 @@ public class Block {
   }
 
   /**
-   * draws the platform
+   * draws the block
    * 
    * @param Graphics g
    * @return N/A
@@ -68,6 +68,5 @@ public class Block {
     int[] xpoints = { this.xpos, this.xpos + 15, this.xpos + 30 };
     int[] ypoints = { this.ypos, this.ypos + 30, this.ypos + 30 };
     g.fillPolygon(xpoints, ypoints, 3);
-
   }
 }

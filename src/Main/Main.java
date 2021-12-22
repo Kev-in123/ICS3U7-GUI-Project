@@ -7,8 +7,10 @@ import java.awt.event.*;
 import Game.*;
 
 public class Main extends JFrame {
+  // declare the game page and the how to play page
   Game game;
   How how;
+  // declare the frame width and height
   public static final int WIDTH = 720;
   public static final int HEIGHT = 720;
 
@@ -45,39 +47,47 @@ public class Main extends JFrame {
     // set the size and location of the exit button
     exitButton.setBounds(100, 370, 105, 30);
     // set the size and location of the back button
-    backButton.setBounds(100, 370, 105, 30);
+    backButton.setBounds(100, 335, 105, 30);
 
     // set the action for the game button
     gameButton.addActionListener(new ActionListener() {
       public void actionPerformed(final ActionEvent e) {
+        // remove the buttons and paint the game
         remove(gameButton);
         remove(howButton);
         remove(exitButton);
         game.paint();
-        setFocusable(false);
-        // add the keylistener from the player class
-        Main.this.addKeyListener(game.player);
       }
     });
 
     // set the action for the how to play button
     howButton.addActionListener(new ActionListener() {
       public void actionPerformed(final ActionEvent e) {
-        add(backButton);
+        // remove the buttons
         remove(gameButton);
         remove(howButton);
         remove(exitButton);
+        // dirty method to get frame to update
+        setSize(WIDTH, HEIGHT - 1);
+        setSize(WIDTH, HEIGHT);
+        // add the back button
+        add(backButton);
+        // display the how to play page
         how = new How();
         add(how);
+
       }
     });
 
     // set the action for the back button
     backButton.addActionListener(new ActionListener() {
       public void actionPerformed(final ActionEvent e) {
+        // remvoe the back button and the how to play page
         remove(backButton);
         remove(how);
+        // repaint the frame back to the main menu
         repaint();
+        // add the buttons back
         add(gameButton);
         add(howButton);
         add(exitButton);
@@ -95,13 +105,14 @@ public class Main extends JFrame {
     add(gameButton);
     add(howButton);
     add(exitButton);
-  }
 
-  public JFrame getFrame() {
-    return this;
   }
 
   public static void main(final String[] args) {
-    new Main();
+    EventQueue.invokeLater(new Runnable() {
+      public void run() {
+        new Main();
+      }
+    });
   }
 }
