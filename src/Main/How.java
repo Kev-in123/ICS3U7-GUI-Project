@@ -6,7 +6,7 @@ import javax.swing.*;
 public class How extends JPanel {
 
   How() {
-    // set the bounds and how to play
+    // set the bounds of the how to play page
     setBounds(100, 0, 500, 500);
     setBackground(Color.CYAN);
     // title text
