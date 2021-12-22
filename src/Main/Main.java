@@ -39,6 +39,8 @@ public class Main extends JFrame {
     final JButton exitButton = new JButton("Exit");
     // add a back button
     final JButton backButton = new JButton("Back");
+    // add a title
+    final JLabel title = new JLabel("Bob's adventure");
 
     // set the size and location of the game button
     gameButton.setBounds(100, 300, 105, 30);
@@ -48,6 +50,10 @@ public class Main extends JFrame {
     exitButton.setBounds(100, 370, 105, 30);
     // set the size and location of the back button
     backButton.setBounds(100, 335, 105, 30);
+    // set the size and location of the title
+    title.setBounds(300, 200, 2000, 300);
+    title.setFont(new Font("Times New Roman", Font.PLAIN, 50));
+    title.setForeground(Color.WHITE);
 
     // set the action for the game button
     gameButton.addActionListener(new ActionListener() {
@@ -67,6 +73,7 @@ public class Main extends JFrame {
         remove(gameButton);
         remove(howButton);
         remove(exitButton);
+        remove(title);
         // dirty method to get frame to update
         setSize(WIDTH, HEIGHT - 1);
         setSize(WIDTH, HEIGHT);
@@ -91,6 +98,7 @@ public class Main extends JFrame {
         add(gameButton);
         add(howButton);
         add(exitButton);
+        add(title);
       }
     });
 
@@ -105,10 +113,12 @@ public class Main extends JFrame {
     add(gameButton);
     add(howButton);
     add(exitButton);
+    add(title);
 
   }
 
   public static void main(final String[] args) {
+    // event queue to
     EventQueue.invokeLater(new Runnable() {
       public void run() {
         new Main();
