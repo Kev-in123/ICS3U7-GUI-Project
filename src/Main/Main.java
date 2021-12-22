@@ -8,6 +8,7 @@ import Game.*;
 
 public class Main extends JFrame {
   Game game;
+  How how;
   public static final int WIDTH = 720;
   public static final int HEIGHT = 720;
 
@@ -34,6 +35,8 @@ public class Main extends JFrame {
     final JButton howButton = new JButton("How to Play");
     // add an exit button
     final JButton exitButton = new JButton("Exit");
+    // add a back button
+    final JButton backButton = new JButton("Back");
 
     // set the size and location of the game button
     gameButton.setBounds(100, 300, 105, 30);
@@ -41,6 +44,8 @@ public class Main extends JFrame {
     howButton.setBounds(100, 335, 105, 30);
     // set the size and location of the exit button
     exitButton.setBounds(100, 370, 105, 30);
+    // set the size and location of the back button
+    backButton.setBounds(100, 370, 105, 30);
 
     // set the action for the game button
     gameButton.addActionListener(new ActionListener() {
@@ -61,7 +66,21 @@ public class Main extends JFrame {
         remove(gameButton);
         remove(howButton);
         remove(exitButton);
-        new How().setVisible(true);
+        how = new How();
+        add(how);
+        add(backButton);
+      }
+    });
+
+    // set the action for the back button
+    backButton.addActionListener(new ActionListener() {
+      public void actionPerformed(final ActionEvent e) {
+        remove(backButton);
+        remove(how);
+        repaint();
+        add(gameButton);
+        add(howButton);
+        add(exitButton);
       }
     });
 
