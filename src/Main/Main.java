@@ -51,7 +51,7 @@ public class Main extends JFrame {
     // set the size and location of the back button
     backButton.setBounds(100, 335, 105, 30);
     // set the size, location, font, and colour of the title
-    title.setBounds(250, 200, 2000, 300);
+    title.setBounds(300, 200, 2000, 300);
     title.setFont(new Font("Consolas", Font.BOLD | Font.ITALIC, 50));
     title.setForeground(Color.WHITE);
 
@@ -62,6 +62,7 @@ public class Main extends JFrame {
         remove(gameButton);
         remove(howButton);
         remove(exitButton);
+        remove(title);
         game.paint();
       }
     });

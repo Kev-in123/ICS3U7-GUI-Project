@@ -1,8 +1,9 @@
 package Game;
 
 import java.io.*;
-import Levels.LoadLevel;
 import java.awt.Graphics;
+
+import Levels.*;
 
 public class DrawMap {
   // variables used throughout the class

@@ -1,12 +1,11 @@
 package Game;
 
 import java.awt.*;
-import java.awt.event.*;
 import javax.swing.JFrame;
 
 import Main.*;
 
-public class Game implements KeyListener {
+public class Game {
   Player player;
   DrawMap draw;
   Graphics graphics;
@@ -34,46 +33,8 @@ public class Game implements KeyListener {
    * @return N/A
    */
   public void paint() {
-    frame.addKeyListener(player);
-    frame.addKeyListener(this);
     draw.draw_world(graphics);
     player.paint();
   }
 
-
-    /**
-   * called when a key is pressed
-   * 
-   * @param a key event listener
-   * @return N/A
-   */
-  public void keyPressed(KeyEvent key) {
-    draw.draw_world(graphics);
-    player.paint();
-  }
-
-
-  /**
-   * called when a key is released
-   * 
-   * @param a key event listener
-   * @return N/A
-   */
-  public void keyReleased(KeyEvent key) {
-    draw.draw_world(graphics);
-    player.paint();
-  }
-
-  // not used
-  // only here so the compiler doesn't complain
-
-  /**
-   * called when a key is typed
-   * 
-   * @param a key event listener
-   * @return N/A
-   */
-
-  public void keyTyped(KeyEvent key) {
-  }
 }
