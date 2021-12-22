@@ -12,7 +12,7 @@ public class Main extends JFrame {
   public static final int WIDTH = 720;
   public static final int HEIGHT = 720;
 
-  // constructer
+  // constructor
   Main() {
     // set the window size
     setSize(WIDTH, HEIGHT);
