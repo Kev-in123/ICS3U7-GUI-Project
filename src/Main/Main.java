@@ -23,7 +23,7 @@ public class Main extends JFrame {
     // set the close operation
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     // set the colour
-    getContentPane().setBackground(Color.CYAN);
+    getContentPane().setBackground(new Color(0, 0, 128));
     // makes the window visible
     setVisible(true);
 

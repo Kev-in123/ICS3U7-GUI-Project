@@ -6,9 +6,9 @@ import javax.swing.*;
 public class How extends JPanel {
 
   How() {
-    // set the bounds of the how to play page
+    // set the bounds and colour of the how to play page
     setBounds(100, 0, 500, 500);
-    setBackground(Color.CYAN);
+    setBackground(new Color(0, 0, 128));
     // title text
     JLabel title = new JLabel("How To Play");
     title.setForeground(Color.BLACK);
