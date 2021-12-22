@@ -5,13 +5,11 @@ import javax.swing.*;
 import java.awt.event.*;
 
 import Game.*;
-import Levels.*;
 
 public class Main extends JFrame {
   Game game;
-  LevelSelect levelSelect;
-  public static final int WIDTH = 600;
-  public static final int HEIGHT = 700;
+  public static final int WIDTH = 720;
+  public static final int HEIGHT = 720;
 
   // constructer
   Main() {
@@ -21,61 +19,49 @@ public class Main extends JFrame {
     setLayout(null);
     // set the close operation
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    // set the colour
+    getContentPane().setBackground(Color.CYAN);
     // makes the window visible
     setVisible(true);
 
     // initialize the game, the player, and the graphics
     Graphics g = getGraphics();
     game = new Game(Main.this, g);
-    levelSelect = new LevelSelect();
 
     // add the game button
     final JButton gameButton = new JButton("Game");
-    // add a level select button
-    final JButton levelSelectButton = new JButton("Level select");
+    // add a how to play button
+    final JButton howButton = new JButton("How to Play");
     // add an exit button
     final JButton exitButton = new JButton("Exit");
-    // add a back button
-    final JButton backButton = new JButton("Back");
 
     // set the size and location of the game button
     gameButton.setBounds(100, 300, 105, 30);
-    // set the size and location of the level select button
-    levelSelectButton.setBounds(210, 300, 105, 30);
+    // set the size and location of the how to play button
+    howButton.setBounds(100, 335, 105, 30);
     // set the size and location of the exit button
-    exitButton.setBounds(320, 300, 105, 30);
-    // set the size and location of the back button
-    backButton.setBounds(320, 600, 105, 30);
+    exitButton.setBounds(100, 370, 105, 30);
 
     // set the action for the game button
     gameButton.addActionListener(new ActionListener() {
       public void actionPerformed(final ActionEvent e) {
         remove(gameButton);
-        remove(levelSelectButton);
+        remove(howButton);
         remove(exitButton);
         game.paint();
         setFocusable(false);
         // add the keylistener from the player class
-        add_listener();
+        Main.this.addKeyListener(game.player);
       }
     });
 
-    // set the action for the level select button
-    levelSelectButton.addActionListener(new ActionListener() {
+    // set the action for the how to play button
+    howButton.addActionListener(new ActionListener() {
       public void actionPerformed(final ActionEvent e) {
         remove(gameButton);
-        remove(levelSelectButton);
+        remove(howButton);
         remove(exitButton);
-        add(backButton);
-        levelSelect.paint(g, Main.this, game);
-      }
-    });
-
-    // set the action for the back button
-    backButton.addActionListener(new ActionListener() {
-      public void actionPerformed(final ActionEvent e) {
-        dispose();
-        setVisible(true);
+        new How().setVisible(true);
       }
     });
 
@@ -88,13 +74,12 @@ public class Main extends JFrame {
 
     // add the buttons to the window
     add(gameButton);
-    add(levelSelectButton);
+    add(howButton);
     add(exitButton);
   }
 
-  public void add_listener() {
-    // add the keylistener from the player class
-    this.addKeyListener(game.player);
+  public JFrame getFrame() {
+    return this;
   }
 
   public static void main(final String[] args) {
