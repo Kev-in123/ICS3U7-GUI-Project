@@ -75,6 +75,7 @@ public class Main extends JFrame {
         remove(exitButton);
         remove(title);
         // dirty method to get frame to update
+        // pack(); can be used, however that makes the transition very obvious
         setSize(WIDTH, HEIGHT - 1);
         setSize(WIDTH, HEIGHT);
         // add the back button
