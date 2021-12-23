@@ -1,7 +1,7 @@
 package Game;
 
 import java.io.*;
-import java.awt.Graphics;
+import java.awt.*;
 
 import Levels.*;
 
