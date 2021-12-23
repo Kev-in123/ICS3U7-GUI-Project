@@ -119,7 +119,7 @@ public class Main extends JFrame {
   }
 
   public static void main(final String[] args) {
-    // event queue to
+    // event queue to handle the window
     EventQueue.invokeLater(new Runnable() {
       public void run() {
         new Main();
