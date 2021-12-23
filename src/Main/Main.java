@@ -40,7 +40,7 @@ public class Main extends JFrame {
     // add a back button
     final JButton backButton = new JButton("Back");
     // add a title
-    final JLabel title = new JLabel("Bob's adventure");
+    final JLabel title = new JLabel("Lost");
 
     // set the size and location of the game button
     gameButton.setBounds(100, 300, 105, 30);
@@ -51,7 +51,7 @@ public class Main extends JFrame {
     // set the size and location of the back button
     backButton.setBounds(100, 335, 105, 30);
     // set the size, location, font, and colour of the title
-    title.setBounds(250, 200, 2000, 300);
+    title.setBounds(300, 200, 500, 300);
     title.setFont(new Font("Consolas", Font.BOLD | Font.ITALIC, 50));
     title.setForeground(Color.WHITE);
 
