@@ -29,13 +29,13 @@ public class DrawMap {
     int length = LEVEL.length;
     blocks = new Block[length];
     for (int i = 0; i < length; i++) {
-      Block b = new Block(x, y, LEVEL[i].charAt(0));
-      blocks[i] = b;
-      x += 30;
-      if (LEVEL[i].charAt(0) == 'e') {
+      if (i % 24 == 0 && i != 0) {
         y += 30;
         x = 0;
       }
+      Block b = new Block(x, y, LEVEL[i].charAt(0));
+      blocks[i] = b;
+      x += 30;
     }
   }
 

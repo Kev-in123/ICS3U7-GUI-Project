@@ -45,7 +45,7 @@ public class Block {
    */
   public void draw(Graphics g) {
     Color color = Color.BLACK;
-    if (this.type != 'b' || this.type != 'e') {
+    if (this.type != 'b') {
       if (this.type == 'p') {
         color = Color.PINK;
       } else if (this.type == 'l') {
