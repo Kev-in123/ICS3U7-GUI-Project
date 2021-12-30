@@ -16,7 +16,6 @@ public class Player implements KeyListener {
   private int yvel = 0;
   private int direction = 1;
   private int level;
-  private boolean jumping = false;
   Block[] blocks;
   Graphics g;
 
@@ -69,22 +68,10 @@ public class Player implements KeyListener {
     if (b.type == '0') {
       return false;
     }
-    if (b.type != 'b') {
-      if (b.type == 's' || b.type == 'l') {
-        respwan();
-      } else if (b.type == 'p') {
-        nextLevel();
-      }
-    }
-    // gets the players position
     int playerBottom = ypos + height;
     int playerRight = xpos + width;
-
-    // checks if the player is on/over the block
-    boolean inBoundary = xpos > b.getXPos() && playerRight < b.getXPos() + b.getXPos();
-    // checks if the player is on the block
+    boolean inBoundary = xpos < b.getXPos() + 30 && playerRight > b.getXPos();
     boolean touching = playerBottom == b.getYPos();
-
     return inBoundary && touching;
   }
 
@@ -94,26 +81,31 @@ public class Player implements KeyListener {
    * @param Player p
    * @return boolean
    */
+
   public boolean under_block(Block b) {
     if (b.type == '0') {
       return false;
     }
-    if (b.type != 'b') {
-      if (b.type == 's' || b.type == 'l') {
-        respwan();
-      } else if (b.type == 'p') {
-        nextLevel();
-      }
-    }
-
-    // gets the players position
     int playerRight = xpos + width;
-
-    // checks if the player is on/over the block
-    boolean inBoundary = xpos > b.getXPos() && playerRight < b.getXPos() + b.getXPos();
-    // checks if the player is on the block
+    boolean inBoundary = xpos < b.getXPos() + 30 && playerRight > b.getXPos();
     boolean touching = ypos == b.getYPos() + 30;
+    return inBoundary && touching;
+  }
 
+  /**
+   * checks if the player is directly to the left of a block, used for collision
+   * detection
+   * 
+   * @param Player p
+   * @return if the player is touching a block
+   */
+  public boolean right_block(Block b) {
+    if (b.type == '0') {
+      return false;
+    }
+    int playerBottom = ypos + height;
+    boolean inBoundary = ypos < b.getYPos() + 30 && playerBottom > b.getYPos();
+    boolean touching = xpos == b.getXPos() - 30;
     return inBoundary && touching;
   }
 
@@ -128,46 +120,10 @@ public class Player implements KeyListener {
     if (b.type == '0') {
       return false;
     }
-    if (b.type != 'b') {
-      if (b.type == 's' || b.type == 'l') {
-        respwan();
-      } else if (b.type == 'p') {
-        nextLevel();
-      }
-    }
-
-    // checks if the player is within the boundaries of the block
-    boolean left = xpos == b.getXPos() && (!under_block(b) || !on_block(b));
-
-    return left && (under_block(b) || on_block(b));
-  }
-
-  /**
-   * checks if the player is directly to the right of a block, used for collision
-   * detection
-   * 
-   * @param Player p
-   * @return if the player is touching a block
-   */
-  public boolean right_block(Block b) {
-    if (b.type == '0') {
-      return false;
-    }
-    if (b.type != 'b') {
-      if (b.type == 's' || b.type == 'l') {
-        respwan();
-      } else if (b.type == 'p') {
-        nextLevel();
-      }
-    }
-
-    // gets the players position
-    int playerRight = xpos + width;
-
-    // checks if the player is within the boundaries of the block
-    boolean right = playerRight == b.getXPos() && (!under_block(b) || !on_block(b));
-
-    return right && (under_block(b) || on_block(b));
+    int playerBottom = ypos + height;
+    boolean inBoundary = ypos < b.getYPos() + 30 && playerBottom > b.getYPos();
+    boolean touching = xpos == b.getXPos() + 30;
+    return inBoundary && touching;
   }
 
   /**
@@ -222,9 +178,7 @@ public class Player implements KeyListener {
   public void tick() {
     xpos += xvel;
     ypos += yvel;
-    while (!jumping) {
-
-    }
+    paint();
   }
 
   /**
