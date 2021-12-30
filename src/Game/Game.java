@@ -34,14 +34,22 @@ public class Game implements KeyListener {
    * @return N/A
    */
   public void paint() {
-    frame.addKeyListener(player);
-    frame.addKeyListener(this);
     draw.draw_world(graphics);
     player.paint();
   }
 
+  /**
+   * Used to add the listeners
+   * 
+   * @param N/A
+   * @return N/A
+   */
+  public void addListeners() {
+    frame.addKeyListener(player);
+    frame.addKeyListener(this);
+  }
 
-    /**
+  /**
    * called when a key is pressed
    * 
    * @param a key event listener
@@ -52,6 +60,8 @@ public class Game implements KeyListener {
     player.paint();
   }
 
+  // not used
+  // only here so the compiler doesn't complain
 
   /**
    * called when a key is released
@@ -60,12 +70,7 @@ public class Game implements KeyListener {
    * @return N/A
    */
   public void keyReleased(KeyEvent key) {
-    draw.draw_world(graphics);
-    player.paint();
   }
-
-  // not used
-  // only here so the compiler doesn't complain
 
   /**
    * called when a key is typed
