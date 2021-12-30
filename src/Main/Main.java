@@ -27,9 +27,8 @@ public class Main extends JFrame {
     // makes the window visible
     setVisible(true);
 
-    // initialize the game, the player, and the graphics
+    // initialize the graphics
     Graphics g = getGraphics();
-    game = new Game(Main.this, g);
 
     // add the game button
     final JButton gameButton = new JButton("Game");
@@ -58,18 +57,24 @@ public class Main extends JFrame {
     // set the action for the game button
     gameButton.addActionListener(new ActionListener() {
       public void actionPerformed(final ActionEvent e) {
-        // remove the buttons and paint the game
+        // remove the buttons, the title and paint the game
         remove(gameButton);
         remove(howButton);
         remove(exitButton);
+        remove(title);
+        // focus the window
+        requestFocusInWindow();
+        // initialize the game, paint it, and add the listeners
+        game = new Game(Main.this, g);
         game.paint();
+        game.addListeners();
       }
     });
 
     // set the action for the how to play button
     howButton.addActionListener(new ActionListener() {
       public void actionPerformed(final ActionEvent e) {
-        // remove the buttons
+        // remove the buttons and the title
         remove(gameButton);
         remove(howButton);
         remove(exitButton);
@@ -90,7 +95,7 @@ public class Main extends JFrame {
     // set the action for the back button
     backButton.addActionListener(new ActionListener() {
       public void actionPerformed(final ActionEvent e) {
-        // remvoe the back button and the how to play page
+        // remove the back button and the how to play page
         remove(backButton);
         remove(how);
         // repaint the frame back to the main menu
