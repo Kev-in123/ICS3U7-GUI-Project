@@ -7,8 +7,6 @@ import Levels.*;
 
 public class DrawMap {
   // variables used throughout the class
-  int xpos;
-  int ypos;
   Block[] blocks;
   int level;
 
