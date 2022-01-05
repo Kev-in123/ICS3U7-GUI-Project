@@ -139,15 +139,6 @@ public class Main extends JFrame {
 
 	  public static void main(final String[] args) {
 	    // event queue to handle the window
-	    EventQueue.invokeLater(new Runnable() {
-	      public void run() {
-	        try {
-				new Main();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-	      }
-	    });
+	    EventQueue.invokeLater(() -> new Main());
 	  }
 }
