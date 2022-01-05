@@ -1,13 +1,11 @@
 package Main;
 
+import java.io.*;
 import java.awt.*;
-
-import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.imageio.*;
 import java.awt.event.*;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
+import java.awt.image.*;
 
 import Game.*;
 import Levels.*;
