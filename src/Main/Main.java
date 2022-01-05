@@ -8,7 +8,6 @@ import java.awt.event.*;
 import java.awt.image.*;
 
 import Game.*;
-import Levels.*;
 
 public class Main extends JFrame {
 	// declare the game page and the how to play page
@@ -46,7 +45,7 @@ public class Main extends JFrame {
 	    final JLabel title = new JLabel("Lost");
 	    
 	    // add image
-	    BufferedImage wPic = ImageIO.read(this.getClass().getResource("27516-2-portal-photos.png"));
+	    BufferedImage wPic = ImageIO.read(new File("Assets/portal-image.png"));
 	    JLabel wIcon = new JLabel(new ImageIcon(wPic));
 
 	    // set the size and location of the game button
@@ -137,14 +136,14 @@ public class Main extends JFrame {
 
 	  }
 
-	  public static void main(final String[] args) {
+	public static void main(final String[] args) {
 	    // event queue to handle the window
 	    EventQueue.invokeLater(() -> {
-                try {
-                    new Main();
-                } catch (IOException e) {
-                   e.printStackTrace();
-                }
-      	    });
-	  }
+            try {
+                new Main();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+      	});
+	}
 }
