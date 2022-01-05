@@ -49,7 +49,7 @@ public class Block {
       if (this.type == 'p') {
         color = Color.PINK;
       } else if (this.type == 'l') {
-        color = Color.ORANGE;
+        color = Color.RED;
       } else if (this.type == 's') {
         color = Color.DARK_GRAY;
       } else if (this.type == '0') {
