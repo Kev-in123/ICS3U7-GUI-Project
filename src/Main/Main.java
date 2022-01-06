@@ -4,7 +4,6 @@ import java.io.*;
 import java.awt.*;
 import javax.swing.*;
 import javax.imageio.*;
-import java.awt.event.*;
 import java.awt.image.*;
 
 import Game.*;
@@ -18,7 +17,7 @@ public class Main extends JFrame {
 	  public static final int HEIGHT = 720;
 
 	  // constructor
-	  Main() throws IOException {
+	Main() throws IOException {
 	    // set the window size
 	    setSize(WIDTH, HEIGHT);
 	    // set the layout
@@ -62,71 +61,61 @@ public class Main extends JFrame {
 	    title.setForeground(Color.WHITE);
 	    // set the size and location of image
 	    wIcon.setBounds(200, 100, 400, 500);
+	    
+    	    // set the action for the game button
+    	    gameButton.addActionListener(e -> {
+                // remove the buttons, the title and paint the game
+                remove(gameButton);
+                remove(howButton);
+                remove(exitButton);
+                remove(title);
+                remove(wIcon);
+                // focus the window
+                requestFocusInWindow();
+                // initialize the game, paint it, and add the listeners
+                game = new Game(Main.this, g);
+                game.paint();
+                game.addListeners();
+            });
 
-	    // set the action for the game button
-	    gameButton.addActionListener(new ActionListener() {
-	      public void actionPerformed(final ActionEvent e) {
-	        // remove the buttons, the title and paint the game
-	        remove(gameButton);
-	        remove(howButton);
-	        remove(exitButton);
-	        remove(title);
-	        remove(wIcon);
-	        // focus the window
-	        requestFocusInWindow();
-	        // initialize the game, paint it, and add the listeners
-	        game = new Game(Main.this, g);
-	        game.paint();
-	        game.addListeners();
-	      }
-	    });
+            // set the action for the how to play button
+            howButton.addActionListener(e -> {
+                // remove the buttons and the title
+                remove(gameButton);
+                remove(howButton);
+                remove(exitButton);
+                remove(title);
+                remove(wIcon);
+                // dirty method to get frame to update
+                // pack(); can be used, however that makes the transition very obvious
+                setSize(WIDTH, HEIGHT - 1);
+                setSize(WIDTH, HEIGHT);
+                // add the back button
+                add(backButton);
+                // display the how to play page
+                how = new How();
+                add(how);
+            });
 
-	    // set the action for the how to play button
-	    howButton.addActionListener(new ActionListener() {
-	      public void actionPerformed(final ActionEvent e) {
-	        // remove the buttons and the title
-	        remove(gameButton);
-	        remove(howButton);
-	        remove(exitButton);
-	        remove(title);
-	        remove(wIcon);
-	        // dirty method to get frame to update
-	        // pack(); can be used, however that makes the transition very obvious
-	        setSize(WIDTH, HEIGHT - 1);
-	        setSize(WIDTH, HEIGHT);
-	        // add the back button
-	        add(backButton);
-	        // display the how to play page
-	        how = new How();
-	        add(how);
+            // set the action for the back button
+            backButton.addActionListener(e-> {
+                // remove the back button and the how to play page
+                remove(backButton);
+                remove(how);
+                // repaint the frame back to the main menu
+                repaint();
+                // add the buttons back
+                add(gameButton);
+                add(howButton);
+                add(exitButton);
+                add(title);
+                add(wIcon);
+            });
 
-	      }
-	    });
-
-	    // set the action for the back button
-	    backButton.addActionListener(new ActionListener() {
-	      public void actionPerformed(final ActionEvent e) {
-	        // remove the back button and the how to play page
-	        remove(backButton);
-	        remove(how);
-	        // repaint the frame back to the main menu
-	        repaint();
-	        // add the buttons back
-	        add(gameButton);
-	        add(howButton);
-	        add(exitButton);
-	        add(title);
-	        add(wIcon);
-	      }
-	    });
-
-	    // set the action for the exit button
-	    exitButton.addActionListener(new ActionListener() {
-	      public void actionPerformed(final ActionEvent e) {
-	        System.exit(0);
-	      }
-	    });
-
+            // set the action for the exit button
+            exitButton.addActionListener(e -> System.exit(0));
+        
+		  
 	    // add the buttons to the window
 	    add(gameButton);
 	    add(howButton);
@@ -134,7 +123,7 @@ public class Main extends JFrame {
 	    add(title);
 	    add(wIcon);
 
-	  }
+	}
 
 	public static void main(final String[] args) {
 	    // event queue to handle the window
