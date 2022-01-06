@@ -4,8 +4,6 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-import Main.*;
-
 public class Game implements KeyListener {
   Player player;
   DrawMap draw;
@@ -16,12 +14,6 @@ public class Game implements KeyListener {
   public Game(JFrame f, Graphics g) {
     frame = f;
     graphics = g;
-    // sets the size of the world
-    frame.setSize(Main.WIDTH, Main.HEIGHT);
-    // sets an empty layout
-    frame.setLayout(null);
-    // makes the window visible
-    frame.setVisible(true);
     // create an instance of the player and the map
     draw = new DrawMap(g);
     player = new Player(g, draw);
