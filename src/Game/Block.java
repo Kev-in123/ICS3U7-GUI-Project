@@ -56,17 +56,21 @@ public class Block {
         color = Color.WHITE;
       }
     }
-    // set the block colour
-    g.setColor(color);
-    // make sure the type isn't a spike
-    if (this.type != 's') {
-      // draw a rectangle to represent the block
+    // if the type is a spike
+    if (this.type == 's') {
+      // draw a rectangle for the background
+      g.setColor(Color.WHITE);
       g.fillRect(this.xpos, this.ypos, width, height);
+      g.setColor(color);
+      // draws a triangle
+      int[] xpoints = { this.xpos + 15, this.xpos + 30, this.xpos };
+      int[] ypoints = { this.ypos, this.ypos + 30, this.ypos + 30 };
+      g.fillPolygon(xpoints, ypoints, 3);
       return;
     }
-    // draws a triangle
-    int[] xpoints = { this.xpos, this.xpos + 15, this.xpos + 30 };
-    int[] ypoints = { this.ypos, this.ypos + 30, this.ypos + 30 };
-    g.fillPolygon(xpoints, ypoints, 3);
+    // set the block colour
+    g.setColor(color);
+    // draw the block
+    g.fillRect(this.xpos, this.ypos, width, height);
   }
 }

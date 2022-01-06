@@ -18,9 +18,11 @@ public class Player implements KeyListener {
   private int level;
   Block[] blocks;
   Graphics g;
+  DrawMap draw;
 
-  public Player(Graphics gr, Block[] b) {
-    blocks = b;
+  public Player(Graphics gr, DrawMap d) {
+    blocks = d.getBlocks();
+    draw = d;
     try {
       FileReader file = new FileReader("data.txt");
       BufferedReader in = new BufferedReader(file);
@@ -61,7 +63,7 @@ public class Player implements KeyListener {
   /**
    * checks if the player is on a block, used to check if the player can jump
    * 
-   * @param Player p
+   * @param Block b
    * @return boolean
    */
   public boolean on_block(Block b) {
@@ -72,16 +74,27 @@ public class Player implements KeyListener {
     int playerRight = xpos + width;
     boolean inBoundary = xpos < b.getXPos() + 30 && playerRight > b.getXPos();
     boolean touching = playerBottom == b.getYPos();
+    if (inBoundary && touching) {
+      if (b.type == 'p') {
+        nextLevel();
+        return false;
+      } else if (b.type == 'l') {
+        respwan();
+        return false;
+      } else if (b.type == 's') {
+        respwan();
+        return false;
+      }
+    }
     return inBoundary && touching;
   }
 
   /**
    * checks if the player is right under a block, used for collision detection
    * 
-   * @param Player p
+   * @param Block b
    * @return boolean
    */
-
   public boolean under_block(Block b) {
     if (b.type == '0') {
       return false;
@@ -89,14 +102,26 @@ public class Player implements KeyListener {
     int playerRight = xpos + width;
     boolean inBoundary = xpos < b.getXPos() + 30 && playerRight > b.getXPos();
     boolean touching = ypos == b.getYPos() + 30;
+    if (inBoundary && touching) {
+      if (b.type == 'p') {
+        nextLevel();
+        return false;
+      } else if (b.type == 'l') {
+        respwan();
+        return false;
+      } else if (b.type == 's') {
+        respwan();
+        return false;
+      }
+    }
     return inBoundary && touching;
   }
 
   /**
-   * checks if the player is directly to the left of a block, used for collision
-   * detection
+   * checks if the player is directly to the left of a block, used for collision detection
    * 
-   * @param Player p
+   * 
+   * @param Block b
    * @return if the player is touching a block
    */
   public boolean right_block(Block b) {
@@ -106,15 +131,27 @@ public class Player implements KeyListener {
     int playerBottom = ypos + height;
     boolean inBoundary = ypos < b.getYPos() + 30 && playerBottom > b.getYPos();
     boolean touching = xpos == b.getXPos() - 30;
+    if (inBoundary && touching) {
+      if (b.type == 'p') {
+        nextLevel();
+        return false;
+      } else if (b.type == 'l') {
+        respwan();
+        return false;
+      } else if (b.type == 's') {
+        respwan();
+        return false;
+      }
+    }
     return inBoundary && touching;
   }
 
   /**
-   * checks if the player is directly to the left of a block, used for collision
-   * detection
+   * checks if the player is directly to the left of a block, used for collision detection
    * 
-   * @param Player p
-   * @return if the player is touching a block
+   * 
+   * @param Block b
+   * @return boolean
    */
   public boolean left_block(Block b) {
     if (b.type == '0') {
@@ -123,8 +160,36 @@ public class Player implements KeyListener {
     int playerBottom = ypos + height;
     boolean inBoundary = ypos < b.getYPos() + 30 && playerBottom > b.getYPos();
     boolean touching = xpos == b.getXPos() + 30;
+    if (inBoundary && touching) {
+      if (b.type == 'p') {
+        nextLevel();
+        return false;
+      } else if (b.type == 'l') {
+        respwan();
+        return false;
+      } else if (b.type == 's') {
+        respwan();
+        return false;
+      }
+    }
     return inBoundary && touching;
   }
+
+  /**
+   * checks if the player is on any block, used for collision detection
+   * 
+   * @param Block b
+   * @return boolean
+   */
+  public boolean on_any_block() {
+    for (Block b : blocks) {
+      if (on_block(b)) {
+        return true;
+      }
+    }
+    return false;
+  }
+
 
   /**
    * respwans the player
@@ -140,33 +205,23 @@ public class Player implements KeyListener {
   }
 
   /**
-   * returns the current level the player is on
-   * 
-   * @param N/A
-   * @return the current level
-   */
-  public int getLevel() {
-    return level;
-  }
-
-  /**
-   * sets the current level the player is on
-   * 
-   * @param N/A
-   * @return the current level
-   */
-  public void setLevel(int l) {
-    level = l;
-  }
-
-  /**
    * updates the level
    * 
    * @param N/A
    * @return N/A
    */
   public void nextLevel() {
-    level++;
+    try {
+      FileWriter file = new FileWriter("data.txt");
+      BufferedWriter out = new BufferedWriter(file);
+      out.write(Integer.toString(++level));
+      out.close();
+    } catch (IOException e) {
+      System.out.println("Couldn't read the file");
+    }
+    draw.draw_world(g);
+    blocks = draw.getBlocks();
+    respwan();
   }
 
   /**
