@@ -24,7 +24,7 @@ public class Game implements KeyListener {
     frame.setVisible(true);
     // create an instance of the player and the map
     draw = new DrawMap(g);
-    player = new Player(g, draw.getBlocks());
+    player = new Player(g, draw);
   }
 
   /**
