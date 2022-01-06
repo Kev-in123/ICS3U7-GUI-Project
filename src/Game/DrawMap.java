@@ -11,30 +11,7 @@ public class DrawMap {
   int level;
 
   DrawMap(Graphics g) {
-    try {
-      FileReader file = new FileReader("data.txt");
-      BufferedReader in = new BufferedReader(file);
-      String line = in.readLine();
-      level = Integer.parseInt(line);
-      in.close();
-    } catch (IOException e) {
-      System.out.println("Couldn't read the file");
-    }
-
-    String[] LEVEL = load_level(g, level);
-    int x = 0;
-    int y = 30;
-    int length = LEVEL.length;
-    blocks = new Block[length];
-    for (int i = 0; i < length; i++) {
-      if (i % 24 == 0 && i != 0) {
-        y += 30;
-        x = 0;
-      }
-      Block b = new Block(x, y, LEVEL[i].charAt(0));
-      blocks[i] = b;
-      x += 30;
-    }
+    draw_world(g);
   }
 
 
