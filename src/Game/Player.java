@@ -235,7 +235,7 @@ public class Player implements KeyListener {
       // go back to the main menu
       Game.frame.dispose();
       try {
-        new Main.Main();
+        new Main.Main(false);
         setLevel("1");
       } catch (IOException e) {
         e.printStackTrace();
