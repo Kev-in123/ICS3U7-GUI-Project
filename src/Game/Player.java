@@ -16,6 +16,7 @@ public class Player implements KeyListener {
   private int yvel = 0;
   private int direction = 1;
   private int level;
+  private boolean jumping = false;
   Block[] blocks;
   Graphics g;
   DrawMap draw;
@@ -118,7 +119,8 @@ public class Player implements KeyListener {
   }
 
   /**
-   * checks if the player is directly to the left of a block, used for collision detection
+   * checks if the player is directly to the left of a block, used for collision
+   * detection
    * 
    * 
    * @param Block b
@@ -147,7 +149,8 @@ public class Player implements KeyListener {
   }
 
   /**
-   * checks if the player is directly to the left of a block, used for collision detection
+   * checks if the player is directly to the left of a block, used for collision
+   * detection
    * 
    * 
    * @param Block b
@@ -190,7 +193,6 @@ public class Player implements KeyListener {
     return false;
   }
 
-
   /**
    * respwans the player
    * 
@@ -205,19 +207,40 @@ public class Player implements KeyListener {
   }
 
   /**
+   * updates the level in the text file
+   * 
+   * @param N/A
+   * @return N/A
+   */
+  public void setLevel(String level) {
+    try {
+      FileWriter file = new FileWriter("data.txt");
+      BufferedWriter out = new BufferedWriter(file);
+      out.write(level);
+      out.close();
+    } catch (IOException e) {
+      System.out.println("Couldn't read the file");
+    }
+  }
+
+  /**
    * updates the level
    * 
    * @param N/A
    * @return N/A
    */
   public void nextLevel() {
-    try {
-      FileWriter file = new FileWriter("data.txt");
-      BufferedWriter out = new BufferedWriter(file);
-      out.write(Integer.toString(++level));
-      out.close();
-    } catch (IOException e) {
-      System.out.println("Couldn't read the file");
+    setLevel(Integer.toString(++level));
+    if (level == 11) {
+      // go back to the main menu
+      Game.frame.dispose();
+      try {
+        new Main.Main();
+        setLevel("1");
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
+
     }
     draw.draw_world(g);
     blocks = draw.getBlocks();
@@ -233,7 +256,17 @@ public class Player implements KeyListener {
   public void tick() {
     xpos += xvel;
     ypos += yvel;
+    gravity();
     paint();
+  }
+
+  public void gravity() {
+    jumping = !on_any_block();
+    if (!jumping) {
+      set_yvel(0);
+    } else if (jumping) {
+      set_yvel(5);
+    }
   }
 
   /**
@@ -264,20 +297,11 @@ public class Player implements KeyListener {
    */
   @Override
   public void keyPressed(KeyEvent key) {
-    if (key.getKeyCode() == KeyEvent.VK_UP) {
-      set_yvel(-5);
+    jumping = !on_any_block();
+    if (key.getKeyCode() == KeyEvent.VK_UP && !jumping) {
+      set_yvel(-65);
       for (Block b : blocks) {
         if (under_block(b)) {
-          set_yvel(0);
-          break;
-        }
-      }
-    }
-
-    if (key.getKeyCode() == KeyEvent.VK_DOWN) {
-      set_yvel(5);
-      for (Block b : blocks) {
-        if (on_block(b)) {
           set_yvel(0);
           break;
         }
@@ -305,7 +329,6 @@ public class Player implements KeyListener {
         }
       }
     }
-    tick();
   }
 
   /**
@@ -316,12 +339,6 @@ public class Player implements KeyListener {
    */
   @Override
   public void keyReleased(KeyEvent key) {
-    if (key.getKeyCode() == KeyEvent.VK_UP) {
-      set_yvel(0);
-    }
-    if (key.getKeyCode() == KeyEvent.VK_DOWN) {
-      set_yvel(0);
-    }
     if (key.getKeyCode() == KeyEvent.VK_LEFT) {
       set_xvel(0);
     }
