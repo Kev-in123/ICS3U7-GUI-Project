@@ -1,14 +1,14 @@
 package Game;
 
 import java.awt.*;
-import java.awt.event.*;
 import javax.swing.*;
 
-public class Game implements KeyListener {
+public class Game implements Runnable {
   Player player;
   DrawMap draw;
   Graphics graphics;
-  JFrame frame;
+  static JFrame frame;
+  Thread gameloop;
 
   // Constructor
   public Game(JFrame f, Graphics g) {
@@ -17,6 +17,28 @@ public class Game implements KeyListener {
     // create an instance of the player and the map
     draw = new DrawMap(g);
     player = new Player(g, draw);
+
+    gameloop = new Thread(this);
+    gameloop.start();
+  }
+
+  /**
+   * game loop
+   * 
+   * @param N/A
+   * @return N/A
+   */
+  public void run() {
+    Thread t = Thread.currentThread();
+    while (t == gameloop) {
+      try {
+        Thread.sleep(1000 / 60);
+      } catch (InterruptedException e) {
+        e.printStackTrace();
+      }
+      player.tick();
+      paint();
+    }
   }
 
   /**
@@ -38,39 +60,6 @@ public class Game implements KeyListener {
    */
   public void addListeners() {
     frame.addKeyListener(player);
-    frame.addKeyListener(this);
   }
 
-  /**
-   * called when a key is pressed
-   * 
-   * @param a key event listener
-   * @return N/A
-   */
-  public void keyPressed(KeyEvent key) {
-    draw.draw_world(graphics);
-    player.paint();
-  }
-
-  // not used
-  // only here so the compiler doesn't complain
-
-  /**
-   * called when a key is released
-   * 
-   * @param a key event listener
-   * @return N/A
-   */
-  public void keyReleased(KeyEvent key) {
-  }
-
-  /**
-   * called when a key is typed
-   * 
-   * @param a key event listener
-   * @return N/A
-   */
-
-  public void keyTyped(KeyEvent key) {
-  }
 }
