@@ -17,7 +17,7 @@ public class Main extends JFrame {
 	  public static final int HEIGHT = 720;
 
 	  // constructor
-	Main() throws IOException {
+	public Main() throws IOException {
 	    // set the window size
 	    setSize(WIDTH, HEIGHT);
 	    // set the layout
