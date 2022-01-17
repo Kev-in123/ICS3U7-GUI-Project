@@ -76,6 +76,18 @@ public class Main extends JFrame {
     // set the action for the game button
     gameButton.addActionListener(e -> {
       // remove the buttons, the title and paint the game
+      try {
+				playSoundEffect();
+			} catch (UnsupportedAudioFileException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (LineUnavailableException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
       remove(gameButton);
       remove(howButton);
       remove(exitButton);
@@ -93,6 +105,18 @@ public class Main extends JFrame {
     // set the action for the how to play button
     howButton.addActionListener(e -> {
       // remove the buttons and the title
+      try {
+				playSoundEffect();
+			} catch (UnsupportedAudioFileException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (LineUnavailableException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
       remove(gameButton);
       remove(howButton);
       remove(exitButton);
@@ -113,6 +137,18 @@ public class Main extends JFrame {
     // set the action for the back button
     backButton.addActionListener(e -> {
       // remove the back button and the how to play page
+      try {
+				playSoundEffect();
+			} catch (UnsupportedAudioFileException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (LineUnavailableException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
       remove(backButton);
       remove(how);
       // repaint the frame back to the main menu
@@ -131,6 +167,18 @@ public class Main extends JFrame {
 
     // add the buttons to the window
     startButton.addActionListener(e -> {
+      try {
+				playSoundEffect();
+			} catch (UnsupportedAudioFileException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (LineUnavailableException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
       add(gameButton);
       add(howButton);
       add(exitButton);
@@ -156,7 +204,16 @@ public class Main extends JFrame {
     pack();
     setSize(WIDTH, HEIGHT - 1);
   }
-
+  
+  // add sound effect for buttons
+	  private static void playSoundEffect() throws UnsupportedAudioFileException, IOException, LineUnavailableException {
+		  File file = new File("mixkit-video-game-retro-click-237.wav");
+		  AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
+		  Clip clip = AudioSystem.getClip();
+		  clip.open(audioStream);
+		  clip.start();
+	}
+  
   public static void main(final String[] args) {
     // event queue to handle the window
     EventQueue.invokeLater(() -> {
