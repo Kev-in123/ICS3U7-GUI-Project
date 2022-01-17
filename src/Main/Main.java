@@ -221,6 +221,15 @@ public class Main extends JFrame {
   
   public static void main(final String[] args) {
     // event queue to handle the window
+	   try {
+      File file = new File("Assets/The-Creeping-Blob_Looping.wav");
+      AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
+      Clip clip = AudioSystem.getClip();
+      clip.open(audioStream);
+      clip.start();
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
     EventQueue.invokeLater(() -> {
       try {
         new Main(true);
