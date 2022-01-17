@@ -153,7 +153,7 @@ public class Main extends JFrame {
       } catch (Exception ex) {
         ex.printStackTrace();
       }
-      System.exit(0)
+      System.exit(0);
     });
 
     // add the buttons to the window
@@ -192,13 +192,14 @@ public class Main extends JFrame {
   }
   
   // add sound effect for buttons
-	  private static void playSoundEffect() throws UnsupportedAudioFileException, IOException, LineUnavailableException {
-		  File file = new File("Assets/mixkit-video-game-retro-click-237.wav");
-		  AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
-		  Clip clip = AudioSystem.getClip();
-		  clip.open(audioStream);
-		  clip.start();
-	}
+  private static void playSoundEffect() throws UnsupportedAudioFileException, IOException, LineUnavailableException {
+	File file = new File("Assets/mixkit-video-game-retro-click-237.wav");
+	AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
+	Clip clip = AudioSystem.getClip();
+	clip.open(audioStream);
+	clip.start();
+  }
+	
   public static void main(String[] args) {
 
     try {
