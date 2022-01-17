@@ -66,7 +66,7 @@ public class Main extends JFrame {
     // set the size and location of image
     wIcon.setBounds(200, 100, 400, 500);
     // set the size and location of the start button
-    startButton.setBounds(100, 200, 105, 30);
+    startButton.setBounds(100, 335, 105, 30);
     // set the size and location of the authors
     authors.setBounds(240, 460, 500, 300);
     authors.setFont(new Font("Consolas", Font.BOLD | Font.ITALIC, 20));
