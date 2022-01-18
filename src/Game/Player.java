@@ -1,6 +1,11 @@
 package Game;
 
 import java.io.*;
+
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+
 import java.awt.*;
 import java.awt.event.*;
 
@@ -20,6 +25,32 @@ public class Player implements KeyListener {
   Block[] blocks;
   Graphics g;
   DrawMap draw;
+  
+  // added a sound effect for entering a portal
+  static void playSoundEffect() {
+	    File file = new File("Assets/Video-Game-Power-Level-Up-A2-Fast.wav");
+	    try {
+	      AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
+	      Clip clip = AudioSystem.getClip();
+	      clip.open(audioStream);
+	      clip.start();
+	    } catch (Exception e) {
+	      e.printStackTrace();
+	    }
+	  }
+  
+  // added a sound effect for hitting a spike of lava
+  static void playSoundEffect2() {
+	    File file = new File("Assets/mixkit-electronic-retro-block-hit-2185.wav");
+	    try {
+	      AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
+	      Clip clip = AudioSystem.getClip();
+	      clip.open(audioStream);
+	      clip.start();
+	    } catch (Exception e) {
+	      e.printStackTrace();
+	    }
+	  }
 
   public Player(Graphics gr, DrawMap d) {
     blocks = d.getBlocks();
@@ -105,6 +136,7 @@ public class Player implements KeyListener {
         if (b.getType() == 's' || b.getType() == 'l') {
           respwan();
         } else if (b.getType() == 'p') {
+          playSoundEffect();
           nextLevel();
         }
 
@@ -118,6 +150,7 @@ public class Player implements KeyListener {
       }
       if (getBounds2().intersects(b.getBounds())) {
         if (b.getType() == 's' || b.getType() == 'l') {
+          playSoundEffect2();
           respwan();
         } else if (b.getType() == 'p') {
           nextLevel();
