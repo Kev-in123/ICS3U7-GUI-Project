@@ -47,6 +47,19 @@ public class Player implements KeyListener {
 	      e.printStackTrace();
 	    }
 	  }
+  
+  // added a sound effect for jumping
+  static void playSoundEffect3() {
+	    File file = new File("Assets/Video game jump Sound Effect.wav");
+	    try {
+	      AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
+	      Clip clip = AudioSystem.getClip();
+	      clip.open(audioStream);
+	      clip.start();
+	    } catch (Exception e) {
+	      e.printStackTrace();
+	    }
+	  }
 
   public Player(Graphics gr, DrawMap d) {
     blocks = d.getBlocks();
@@ -245,6 +258,7 @@ public class Player implements KeyListener {
   public void keyPressed(KeyEvent key) {
     int keyCode = key.getKeyCode();
     if (keyCode == KeyEvent.VK_UP && !jumping) {
+      playSoundEffect3();
       yvel = -15;
       jumping = true;
     } else if (keyCode == KeyEvent.VK_DOWN) {
