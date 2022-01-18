@@ -14,8 +14,8 @@ public class Main extends JFrame {
   Game game;
   How how;
   // declare the frame width and height
-  public static final int WIDTH = 720;
-  public static final int HEIGHT = 720;
+  public static int WIDTH = 720;
+  public static int HEIGHT = 720;
 
   // constructor
   public Main(boolean is_user) throws IOException {
@@ -29,24 +29,26 @@ public class Main extends JFrame {
     getContentPane().setBackground(new Color(0, 0, 128));
     // makes the window visible
     setVisible(true);
+    // make the window un-resizable
+    setResizable(false);
 
     // initialize the graphics
     Graphics g = getGraphics();
 
     // add a start button
-    final JButton startButton = new JButton("Start");
+    JButton startButton = new JButton("Start");
     // add the game button
-    final JButton gameButton = new JButton("Game");
+    JButton gameButton = new JButton("Game");
     // add a how to play button
-    final JButton howButton = new JButton("How to Play");
+    JButton howButton = new JButton("How to Play");
     // add an exit button
-    final JButton exitButton = new JButton("Exit");
+    JButton exitButton = new JButton("Exit");
     // add a back button
-    final JButton backButton = new JButton("Back");
+    JButton backButton = new JButton("Back");
     // add a title
-    final JLabel title = new JLabel("Lost");
+    JLabel title = new JLabel("Lost");
     // add the authors
-    final JLabel authors = new JLabel("By: Kevin Cai and Ayman Farhad");
+    JLabel authors = new JLabel("By: Kevin Cai and Ayman Farhad");
 
     // add image
     BufferedImage wPic = ImageIO.read(new File("Assets/portal-image.png"));
@@ -73,15 +75,10 @@ public class Main extends JFrame {
     authors.setFont(new Font("Consolas", Font.BOLD | Font.ITALIC, 20));
     authors.setForeground(Color.WHITE);
 
-
     // set the action for the game button
     gameButton.addActionListener(e -> {
-      // play the sound effect
-      try {
-        playSoundEffect();
-      } catch (Exception ex) {
-        ex.printStackTrace();
-      }
+      // play sound
+      playSoundEffect();
       // remove the buttons, the title and paint the game
       remove(gameButton);
       remove(howButton);
@@ -99,12 +96,8 @@ public class Main extends JFrame {
 
     // set the action for the how to play button
     howButton.addActionListener(e -> {
-      // play the sound effect
-      try {
-        playSoundEffect();
-      } catch (Exception ex) {
-        ex.printStackTrace();
-      }
+      // play sound
+      playSoundEffect();
       // remove the buttons and the title
       remove(gameButton);
       remove(howButton);
@@ -125,12 +118,8 @@ public class Main extends JFrame {
 
     // set the action for the back button
     backButton.addActionListener(e -> {
-      // play the sound effect
-      try {
-        playSoundEffect();
-      } catch (Exception ex) {
-        ex.printStackTrace();
-      }
+      // play sound
+      playSoundEffect();
       // remove the back button and the how to play page
       remove(backButton);
       remove(how);
@@ -147,24 +136,15 @@ public class Main extends JFrame {
 
     // set the action for the exit button
     exitButton.addActionListener(e -> {
-      // play the sound effect
-      try {
-        playSoundEffect();
-      } catch (Exception ex) {
-        ex.printStackTrace();
-      }
+      // play sound
+      playSoundEffect();
       System.exit(0);
     });
 
     // add the buttons to the window
     startButton.addActionListener(e -> {
-      // play the sound effect
-      try {
-        playSoundEffect();
-      } catch (Exception ex) {
-        ex.printStackTrace();
-      }
-      // add the buttons
+      // play sound
+      playSoundEffect();
       add(gameButton);
       add(howButton);
       add(exitButton);
@@ -190,16 +170,19 @@ public class Main extends JFrame {
     pack();
     setSize(WIDTH, HEIGHT - 1);
   }
-  
-  // add sound effect for buttons
-  private static void playSoundEffect() throws UnsupportedAudioFileException, IOException, LineUnavailableException {
-	File file = new File("Assets/mixkit-video-game-retro-click-237.wav");
-	AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
-	Clip clip = AudioSystem.getClip();
-	clip.open(audioStream);
-	clip.start();
+
+  static void playSoundEffect() {
+    File file = new File("Assets/mixkit-video-game-retro-click-237.wav");
+    try {
+      AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
+      Clip clip = AudioSystem.getClip();
+      clip.open(audioStream);
+      clip.start();
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
   }
-	
+
   public static void main(String[] args) {
 
     try {
