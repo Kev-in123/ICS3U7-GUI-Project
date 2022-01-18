@@ -136,16 +136,6 @@ public class Player implements KeyListener {
   }
 
   /**
-   * gets the player's bounds
-   * 
-   * @param N/A
-   * @return N/A
-   */
-  public Rectangle getBounds() {
-    return new Rectangle(xpos - 1, ypos - 1, width + 1, height + 1);
-  }
-
-  /**
    * respwans the player
    * 
    * @param a graphics class
