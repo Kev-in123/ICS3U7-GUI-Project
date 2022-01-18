@@ -17,7 +17,6 @@ public class Game implements Runnable {
     // create an instance of the player and the map
     draw = new DrawMap(g);
     player = new Player(g, draw);
-
     gameloop = new Thread(this);
     gameloop.start();
   }
@@ -32,7 +31,7 @@ public class Game implements Runnable {
     Thread t = Thread.currentThread();
     while (t == gameloop) {
       try {
-        Thread.sleep(1000 / 60);
+        Thread.sleep(1000 / 30);
       } catch (InterruptedException e) {
         e.printStackTrace();
       }
@@ -61,5 +60,4 @@ public class Game implements Runnable {
   public void addListeners() {
     frame.addKeyListener(player);
   }
-
 }

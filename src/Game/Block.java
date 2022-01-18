@@ -4,11 +4,11 @@ import java.awt.*;
 
 public class Block {
   // variables used throughout the class
-  int xpos;
-  int ypos;
-  char type;
-  int width = 30;
-  int height = 30;
+  private int xpos;
+  private int ypos;
+  private char type;
+  private int width = 30;
+  private int height = 30;
 
   // constructor, used to determine the position, size, and type of the platform
   Block(int x, int y, char type) {
@@ -21,7 +21,7 @@ public class Block {
    * returns the block's x position
    * 
    * @param N/A
-   * @return the x position of the block
+   * @return xpos
    */
   public int getXPos() {
     return this.xpos;
@@ -31,10 +31,50 @@ public class Block {
    * returns the block's y position
    * 
    * @param N/A
-   * @return the y position of the block
+   * @return ypos
    */
   public int getYPos() {
     return this.ypos;
+  }
+
+  /**
+   * returns the block's width
+   * 
+   * @param N/A
+   * @return width
+   */
+  public int getWidth() {
+    return this.width;
+  }
+
+  /**
+   * returns the block's height
+   * 
+   * @param N/A
+   * @return height
+   */
+  public int getHeight() {
+    return this.height;
+  }
+
+  /**
+   * returns the block's ytpye
+   * 
+   * @param N/A
+   * @return type
+   */
+  public char getType() {
+    return this.type;
+  }
+
+  /**
+   * get the blocks bounds
+   * 
+   * @param N/A
+   * @return Rectangle
+   */
+  public Rectangle getBounds() {
+    return new Rectangle(xpos, ypos, width, height);
   }
 
   /**

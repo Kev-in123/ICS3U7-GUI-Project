@@ -8,15 +8,15 @@ public class Player implements KeyListener {
   // variables used throughout the class
   private int height = 30;
   private int width = 30;
-  private int startx = 150;
-  private int starty = 150;
+  private int startx = 30;
+  private int starty = 660;
   private int xpos = startx;
   private int ypos = starty;
   private int xvel = 0;
   private int yvel = 0;
   private int direction = 1;
-  private int level;
   private boolean jumping = false;
+  private int level;
   Block[] blocks;
   Graphics g;
   DrawMap draw;
@@ -43,12 +43,13 @@ public class Player implements KeyListener {
    * @return N/A
    */
   public void paint() {
+    Graphics2D g2 = (Graphics2D) g;
     // sets the color of the player
-    g.setColor(Color.BLUE);
+    g2.setColor(Color.BLUE);
     // draws the player
-    g.fillRect(xpos, ypos, width, height);
+    g2.fillRect(xpos, ypos, width, height);
     // sets the color of the player's eye
-    g.setColor(Color.BLACK);
+    g2.setColor(Color.BLACK);
     // determine the player's eye size based on the width
     int eye_size = width / 5;
     // determine the eye's location based on the width and direction
@@ -58,139 +59,90 @@ public class Player implements KeyListener {
     } else {
       eye_x = xpos + 5;
     }
-    g.fillOval(eye_x, ypos + 10, eye_size, eye_size);
+    g2.fillOval(eye_x, ypos + 10, eye_size, eye_size);
   }
 
   /**
-   * checks if the player is on a block, used to check if the player can jump
-   * 
-   * @param Block b
-   * @return boolean
+   * collision detection to the x boundaries of the palyer
+   *
+   * @param N/A
+   * @return Rectangle
    */
-  public boolean on_block(Block b) {
-    if (b.type == '0') {
-      return false;
-    }
-    int playerBottom = ypos + height;
-    int playerRight = xpos + width;
-    boolean inBoundary = xpos < b.getXPos() + 30 && playerRight > b.getXPos();
-    boolean touching = playerBottom == b.getYPos();
-    if (inBoundary && touching) {
-      if (b.type == 'p') {
-        nextLevel();
-        return false;
-      } else if (b.type == 'l') {
-        respwan();
-        return false;
-      } else if (b.type == 's') {
-        respwan();
-        return false;
-      }
-    }
-    return inBoundary && touching;
+  public Rectangle getBounds1() {
+    int bx = xpos + xvel;
+    int by = ypos + 2;
+    int bw = 30 + xvel / 2;
+    int bh = 30 - 4;
+    return new Rectangle(bx, by, bw, bh);
   }
 
   /**
-   * checks if the player is right under a block, used for collision detection
-   * 
-   * @param Block b
-   * @return boolean
+   * collision detection to the y boundaries of the palyer
+   *
+   * @param N/A
+   * @return Rectangle
    */
-  public boolean under_block(Block b) {
-    if (b.type == '0') {
-      return false;
-    }
-    int playerRight = xpos + width;
-    boolean inBoundary = xpos < b.getXPos() + 30 && playerRight > b.getXPos();
-    boolean touching = ypos == b.getYPos() + 30;
-    if (inBoundary && touching) {
-      if (b.type == 'p') {
-        nextLevel();
-        return false;
-      } else if (b.type == 'l') {
-        respwan();
-        return false;
-      } else if (b.type == 's') {
-        respwan();
-        return false;
-      }
-    }
-    return inBoundary && touching;
+  public Rectangle getBounds2() {
+    int bx = xpos + 2;
+    int by = ypos + yvel;
+    int bw = 30 - 4;
+    int bh = 30 + yvel / 2;
+    return new Rectangle(bx, by, bw, bh);
   }
 
   /**
-   * checks if the player is directly to the left of a block, used for collision
-   * detection
-   * 
-   * 
-   * @param Block b
-   * @return if the player is touching a block
+   * collision detection to the x & y boundaries of the player
+   *
+   * @param N/A
+   * @return Rectangle
    */
-  public boolean right_block(Block b) {
-    if (b.type == '0') {
-      return false;
-    }
-    int playerBottom = ypos + height;
-    boolean inBoundary = ypos < b.getYPos() + 30 && playerBottom > b.getYPos();
-    boolean touching = xpos == b.getXPos() - 30;
-    if (inBoundary && touching) {
-      if (b.type == 'p') {
-        nextLevel();
-        return false;
-      } else if (b.type == 'l') {
-        respwan();
-        return false;
-      } else if (b.type == 's') {
-        respwan();
-        return false;
-      }
-    }
-    return inBoundary && touching;
-  }
-
-  /**
-   * checks if the player is directly to the left of a block, used for collision
-   * detection
-   * 
-   * 
-   * @param Block b
-   * @return boolean
-   */
-  public boolean left_block(Block b) {
-    if (b.type == '0') {
-      return false;
-    }
-    int playerBottom = ypos + height;
-    boolean inBoundary = ypos < b.getYPos() + 30 && playerBottom > b.getYPos();
-    boolean touching = xpos == b.getXPos() + 30;
-    if (inBoundary && touching) {
-      if (b.type == 'p') {
-        nextLevel();
-        return false;
-      } else if (b.type == 'l') {
-        respwan();
-        return false;
-      } else if (b.type == 's') {
-        respwan();
-        return false;
-      }
-    }
-    return inBoundary && touching;
-  }
-
-  /**
-   * checks if the player is on any block, used for collision detection
-   * 
-   * @param Block b
-   * @return boolean
-   */
-  public boolean on_any_block() {
+  void collision() {
     for (Block b : blocks) {
-      if (on_block(b)) {
-        return true;
+      if (b.getType() == '0') {
+        continue;
+      }
+      if (getBounds1().intersects(b.getBounds())) {
+        if (b.getType() == 's' || b.getType() == 'l') {
+          respwan();
+        } else if (b.getType() == 'p') {
+          nextLevel();
+        }
+
+        if (xvel > 0) {
+          xvel = 0;
+          xpos = b.getXPos() - width;
+        } else if (xvel < 0) {
+          xvel = 0;
+          xpos = b.getXPos() + b.getWidth();
+        }
+      }
+      if (getBounds2().intersects(b.getBounds())) {
+        if (b.getType() == 's' || b.getType() == 'l') {
+          respwan();
+        } else if (b.getType() == 'p') {
+          nextLevel();
+        }
+        if (yvel > 0) {
+          yvel = 0;
+          ypos = b.getYPos() - height;
+          jumping = false;
+        } else if (yvel < 0) {
+          yvel = 0;
+          ypos = b.getYPos() + b.getHeight();
+          jumping = false;
+        }
       }
     }
-    return false;
+  }
+
+  /**
+   * gets the player's bounds
+   * 
+   * @param N/A
+   * @return N/A
+   */
+  public Rectangle getBounds() {
+    return new Rectangle(xpos - 1, ypos - 1, width + 1, height + 1);
   }
 
   /**
@@ -203,6 +155,7 @@ public class Player implements KeyListener {
     // reset the location of the player
     xpos = startx;
     ypos = starty;
+    yvel = 0;
     paint();
   }
 
@@ -240,7 +193,6 @@ public class Player implements KeyListener {
       } catch (IOException e) {
         e.printStackTrace();
       }
-
     }
     draw.draw_world(g);
     blocks = draw.getBlocks();
@@ -256,37 +208,10 @@ public class Player implements KeyListener {
   public void tick() {
     xpos += xvel;
     ypos += yvel;
-    gravity();
-    paint();
-  }
-
-  public void gravity() {
-    jumping = !on_any_block();
-    if (!jumping) {
-      set_yvel(0);
-    } else if (jumping) {
-      set_yvel(5);
-    }
-  }
-
-  /**
-   * used to set the x velocity
-   * 
-   * @param N/A
-   * @return N/A
-   */
-  public void set_xvel(int vel) {
-    xvel = vel;
-  }
-
-  /**
-   * used to set the y velocity
-   * 
-   * @param N/A
-   * @return N/A
-   */
-  public void set_yvel(int vel) {
-    yvel = vel;
+    collision();
+    if (ypos >= 690)
+      return;
+    ++yvel;
   }
 
   /**
@@ -297,37 +222,18 @@ public class Player implements KeyListener {
    */
   @Override
   public void keyPressed(KeyEvent key) {
-    jumping = !on_any_block();
-    if (key.getKeyCode() == KeyEvent.VK_UP && !jumping) {
-      set_yvel(-65);
-      for (Block b : blocks) {
-        if (under_block(b)) {
-          set_yvel(0);
-          break;
-        }
-      }
-    }
-
-    if (key.getKeyCode() == KeyEvent.VK_LEFT) {
-      set_xvel(-5);
+    int keyCode = key.getKeyCode();
+    if (keyCode == KeyEvent.VK_UP && !jumping) {
+      yvel = -15;
+      jumping = true;
+    } else if (keyCode == KeyEvent.VK_DOWN) {
+      yvel = 10;
+    } else if (keyCode == KeyEvent.VK_LEFT) {
+      xvel = -10;
       direction = -1;
-      for (Block b : blocks) {
-        if (left_block(b)) {
-          set_xvel(0);
-          break;
-        }
-      }
-    }
-
-    if (key.getKeyCode() == KeyEvent.VK_RIGHT) {
-      set_xvel(5);
+    } else if (keyCode == KeyEvent.VK_RIGHT) {
+      xvel = 10;
       direction = 1;
-      for (Block b : blocks) {
-        if (right_block(b)) {
-          set_xvel(0);
-          break;
-        }
-      }
     }
   }
 
@@ -339,12 +245,19 @@ public class Player implements KeyListener {
    */
   @Override
   public void keyReleased(KeyEvent key) {
-    if (key.getKeyCode() == KeyEvent.VK_LEFT) {
-      set_xvel(0);
+    int keyCode = key.getKeyCode();
+    if (keyCode == KeyEvent.VK_UP && !jumping) {
+      yvel = 0;
+    } else if (keyCode == KeyEvent.VK_DOWN) {
+      yvel = 0;
     }
-    if (key.getKeyCode() == KeyEvent.VK_RIGHT) {
-      set_xvel(0);
+    if (keyCode == KeyEvent.VK_LEFT) {
+      xvel = 0;
     }
+    if (keyCode == KeyEvent.VK_RIGHT) {
+      xvel = 0;
+    }
+
   }
 
   // not used
