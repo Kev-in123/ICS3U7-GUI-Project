@@ -1,13 +1,9 @@
 package Game;
 
 import java.io.*;
-
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
-
 import java.awt.*;
 import java.awt.event.*;
+import javax.sound.sampled.*;
 
 public class Player implements KeyListener {
   // variables used throughout the class
@@ -134,6 +130,7 @@ public class Player implements KeyListener {
       }
       if (getBounds1().intersects(b.getBounds())) {
         if (b.getType() == 's' || b.getType() == 'l') {
+	  playSoundEffect2(); 
           respwan();
         } else if (b.getType() == 'p') {
           playSoundEffect();
@@ -153,6 +150,7 @@ public class Player implements KeyListener {
           playSoundEffect2();
           respwan();
         } else if (b.getType() == 'p') {
+          playSoundEffect();
           nextLevel();
         }
         if (yvel > 0) {
