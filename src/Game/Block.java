@@ -94,6 +94,8 @@ public class Block {
         color = Color.DARK_GRAY;
       } else if (this.type == '0') {
         color = Color.WHITE;
+      } else if (this.type == 'c') {
+        color = Color.YELLOW;
       }
     }
     // if the type is a spike
