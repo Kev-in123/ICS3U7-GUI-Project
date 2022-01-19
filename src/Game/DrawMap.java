@@ -45,7 +45,7 @@ public class DrawMap {
   /**
    * loads the world
    * 
-   * @param a graphics class, the level the user is on
+   * @param int
    * @return N/A
    */
   public String[] load_level(int level) {
@@ -60,7 +60,7 @@ public class DrawMap {
   /**
    * draws the world
    * 
-   * @param a graphics class, the level the user is on
+   * @param Graphics
    * @return N/A
    */
   public void draw_world(Graphics g) {

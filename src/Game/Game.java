@@ -43,7 +43,7 @@ public class Game implements Runnable {
   /**
    * Used to draw the world
    * 
-   * @param a graphics class
+   * @param N/A
    * @return N/A
    */
   public void paint() {

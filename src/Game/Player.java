@@ -22,44 +22,6 @@ public class Player implements KeyListener {
   Graphics g;
   DrawMap draw;
   
-  // added a sound effect for entering a portal
-  static void playSoundEffect() {
-	    File file = new File("Assets/Video-Game-Power-Level-Up-A2-Fast.wav");
-	    try {
-	      AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
-	      Clip clip = AudioSystem.getClip();
-	      clip.open(audioStream);
-	      clip.start();
-	    } catch (Exception e) {
-	      e.printStackTrace();
-	    }
-	  }
-  
-  // added a sound effect for hitting a spike of lava
-  static void playSoundEffect2() {
-	    File file = new File("Assets/mixkit-electronic-retro-block-hit-2185.wav");
-	    try {
-	      AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
-	      Clip clip = AudioSystem.getClip();
-	      clip.open(audioStream);
-	      clip.start();
-	    } catch (Exception e) {
-	      e.printStackTrace();
-	    }
-	  }
-  
-  // added a sound effect for jumping
-  static void playSoundEffect3() {
-	    File file = new File("Assets/Video game jump Sound Effect.wav");
-	    try {
-	      AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
-	      Clip clip = AudioSystem.getClip();
-	      clip.open(audioStream);
-	      clip.start();
-	    } catch (Exception e) {
-	      e.printStackTrace();
-	    }
-	  }
 
   public Player(Graphics gr, DrawMap d) {
     blocks = d.getBlocks();
@@ -77,9 +39,63 @@ public class Player implements KeyListener {
   }
 
   /**
+   * sound effect entering a portal
+   *
+   * @param N/A
+   * @return N/A
+   */
+    static void playSoundEffect() {
+	    File file = new File("Assets/Video-Game-Power-Level-Up-A2-Fast.wav");
+	    try {
+	      AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
+	      Clip clip = AudioSystem.getClip();
+	      clip.open(audioStream);
+	      clip.start();
+	    } catch (Exception e) {
+	      e.printStackTrace();
+	    }
+	  }
+  
+  /**
+   * sound effect for hitting a spike or lava
+   *
+   * @param N/A
+   * @return N/A
+   */ 
+    static void playSoundEffect2() {
+	    File file = new File("Assets/mixkit-electronic-retro-block-hit-2185.wav");
+	    try {
+	      AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
+	      Clip clip = AudioSystem.getClip();
+	      clip.open(audioStream);
+	      clip.start();
+	    } catch (Exception e) {
+	      e.printStackTrace();
+	    }
+	  }
+  
+  /**
+   * sound effect for jumping
+   *
+   * @param N/A
+   * @return N/A
+   */
+  static void playSoundEffect3() {
+	    File file = new File("Assets/Video game jump Sound Effect.wav");
+	    try {
+	      AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
+	      Clip clip = AudioSystem.getClip();
+	      clip.open(audioStream);
+	      clip.start();
+	    } catch (Exception e) {
+	      e.printStackTrace();
+	    }
+	  }
+
+  /**
    * draws the player
    * 
-   * @param a graphics class
+   * @param N/A
    * @return N/A
    */
   public void paint() {
@@ -103,7 +119,7 @@ public class Player implements KeyListener {
   }
 
   /**
-   * collision detection to the x boundaries of the palyer
+   * collision detection for the x boundaries of the palyer
    *
    * @param N/A
    * @return Rectangle
@@ -117,7 +133,7 @@ public class Player implements KeyListener {
   }
 
   /**
-   * collision detection to the y boundaries of the palyer
+   * collision detection for the y boundaries of the palyer
    *
    * @param N/A
    * @return Rectangle
@@ -182,7 +198,7 @@ public class Player implements KeyListener {
   /**
    * respwans the player
    * 
-   * @param a graphics class
+   * @param N/A
    * @return N/A
    */
   public void respwan() {
@@ -196,7 +212,7 @@ public class Player implements KeyListener {
   /**
    * updates the level in the text file
    * 
-   * @param N/A
+   * @param String
    * @return N/A
    */
   public void setLevel(String level) {
@@ -251,7 +267,7 @@ public class Player implements KeyListener {
   /**
    * called when a key is pressed
    * 
-   * @param a key event listener
+   * @param KeyEvent
    * @return N/A
    */
   @Override
@@ -275,7 +291,7 @@ public class Player implements KeyListener {
   /**
    * called when a key is released
    * 
-   * @param a key event listener
+   * @param KeyEvent
    * @return N/A
    */
   @Override
@@ -301,7 +317,7 @@ public class Player implements KeyListener {
   /**
    * called when a key is typed
    * 
-   * @param a key event listener
+   * @param KeyEvent
    * @return N/A
    */
   @Override

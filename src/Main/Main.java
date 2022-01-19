@@ -171,6 +171,12 @@ public class Main extends JFrame {
     setSize(WIDTH, HEIGHT - 1);
   }
 
+  /**
+   * Plays a sound when a button is clicked
+   *
+   * @param N/A
+   * @return N/A
+   */
   static void playSoundEffect() {
     File file = new File("Assets/mixkit-video-game-retro-click-237.wav");
     try {
