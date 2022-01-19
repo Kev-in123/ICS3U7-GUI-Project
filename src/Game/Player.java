@@ -273,16 +273,16 @@ public class Player implements KeyListener {
   @Override
   public void keyPressed(KeyEvent key) {
     int keyCode = key.getKeyCode();
-    if (keyCode == KeyEvent.VK_UP && !jumping) {
+    if ((keyCode == KeyEvent.VK_UP || keyCode == 'W') && !jumping) {
       playSoundEffect3();
       yvel = -15;
       jumping = true;
-    } else if (keyCode == KeyEvent.VK_DOWN) {
+    } else if (keyCode == KeyEvent.VK_DOWN || keyCode == 'S') {
       yvel = 10;
-    } else if (keyCode == KeyEvent.VK_LEFT) {
+    } else if (keyCode == KeyEvent.VK_LEFT || keyCode == 'A') {
       xvel = -10;
       direction = -1;
-    } else if (keyCode == KeyEvent.VK_RIGHT) {
+    } else if (keyCode == KeyEvent.VK_RIGHT || keyCode == 'D') {
       xvel = 10;
       direction = 1;
     }
@@ -297,15 +297,15 @@ public class Player implements KeyListener {
   @Override
   public void keyReleased(KeyEvent key) {
     int keyCode = key.getKeyCode();
-    if (keyCode == KeyEvent.VK_UP && !jumping) {
+    if ((keyCode == KeyEvent.VK_UP || keyCode == 'W') && !jumping) {
       yvel = 0;
-    } else if (keyCode == KeyEvent.VK_DOWN) {
+    } else if (keyCode == KeyEvent.VK_DOWN || keyCode == 'S') {
       yvel = 0;
     }
-    if (keyCode == KeyEvent.VK_LEFT) {
+    if (keyCode == KeyEvent.VK_LEFT || keyCode == 'A') {
       xvel = 0;
     }
-    if (keyCode == KeyEvent.VK_RIGHT) {
+    if (keyCode == KeyEvent.VK_RIGHT || keyCode == 'D') {
       xvel = 0;
     }
 
