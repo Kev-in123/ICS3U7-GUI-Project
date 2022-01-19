@@ -115,7 +115,7 @@ public class Block {
       g.fillRect(this.xpos, this.ypos, width, height);
       g.setColor(color);
       // draws a circle
-      g.fillOval(this.xpos + 5, this.ypos + 5, 30, 30);      
+      g.fillOval(this.xpos, this.ypos, 30, 30);      
       return;
     }
     // set the block colour
