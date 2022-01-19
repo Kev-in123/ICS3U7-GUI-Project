@@ -190,7 +190,7 @@ public class Main extends JFrame {
       AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
       Clip clip = AudioSystem.getClip();
       clip.open(audioStream);
-      clip.start();
+      clip.loop(Clip.LOOP_CONTINUOUSLY);
     } catch (Exception e) {
       e.printStackTrace();
     }
