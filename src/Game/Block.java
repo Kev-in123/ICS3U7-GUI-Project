@@ -108,6 +108,16 @@ public class Block {
       g.fillPolygon(xpoints, ypoints, 3);
       return;
     }
+    // if the type is a coin
+    if (this.type == 'c') {
+      // draw a rectangle for the background
+      g.setColor(Color.WHITE);
+      g.fillRect(this.xpos, this.ypos, width, height);
+      g.setColor(color);
+      // draws a circle
+      g.fillOval(this.xpos + 5, this.ypos + 5, 30, 30);      
+      return;
+    }
     // set the block colour
     g.setColor(color);
     // draw the block
