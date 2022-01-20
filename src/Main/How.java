@@ -7,7 +7,7 @@ public class How extends JPanel {
 
   How() {
     // set the bounds and colour of the how to play page
-    setBounds(100, 0, 500, 500);
+    setBounds(100, 75, 500, 500);
     setBackground(new Color(0, 0, 128));
     // title text
     JLabel title = new JLabel("How To Play");
