@@ -50,9 +50,10 @@ public class Main extends JFrame {
     // add the authors
     JLabel authors = new JLabel("By: Kevin Cai and Ayman Farhad");
 
-    // add image
-    BufferedImage wPic = ImageIO.read(new File("Assets/portal-image.png"));
-    JLabel wIcon = new JLabel(new ImageIcon(wPic));
+    // add GIF
+    JLabel GIF = new JLabel("");
+    ImageIcon GIFicon = new ImageIcon(this.getClass().getResource("/tumblr_mm41jutaYI1rnir1do1_500.gif"));
+    GIF.setIcon(GIFicon);
 
     // set the size and location of the game button
     gameButton.setBounds(100, 300, 105, 30);
@@ -63,11 +64,11 @@ public class Main extends JFrame {
     // set the size and location of the back button
     backButton.setBounds(100, 335, 105, 30);
     // set the size, location, font, and colour of the title
-    title.setBounds(345, 200, 500, 300);
+    title.setBounds(350, 200, 500, 300);
     title.setFont(new Font("Consolas", Font.BOLD | Font.ITALIC, 50));
     title.setForeground(Color.WHITE);
     // set the size and location of image
-    wIcon.setBounds(200, 100, 400, 500);
+    GIF.setBounds(160, 100, 400, 500);
     // set the size and location of the start button
     startButton.setBounds(100, 335, 105, 30);
     // set the size and location of the authors
@@ -84,7 +85,7 @@ public class Main extends JFrame {
       remove(howButton);
       remove(exitButton);
       remove(title);
-      remove(wIcon);
+      remove(GIF);
       remove(authors);
       // focus the window
       requestFocusInWindow();
@@ -103,7 +104,7 @@ public class Main extends JFrame {
       remove(howButton);
       remove(exitButton);
       remove(title);
-      remove(wIcon);
+      remove(GIF);
       remove(authors);
       // dirty method to get frame to update
       // pack(); can be used, however that makes the transition very obvious
@@ -130,7 +131,7 @@ public class Main extends JFrame {
       add(howButton);
       add(exitButton);
       add(title);
-      add(wIcon);
+      add(GIF);
       add(authors);
     });
 
@@ -165,7 +166,7 @@ public class Main extends JFrame {
 
     add(authors);
     add(title);
-    add(wIcon);
+    add(GIF);
 
     pack();
     setSize(WIDTH, HEIGHT - 1);
