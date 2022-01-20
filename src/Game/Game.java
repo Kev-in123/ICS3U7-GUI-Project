@@ -47,7 +47,7 @@ public class Game implements Runnable {
    * @return N/A
    */
   public void paint() {
-    draw.draw_world(graphics);
+    draw.redraw(graphics);
     player.paint();
   }
 
