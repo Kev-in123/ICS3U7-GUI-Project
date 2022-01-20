@@ -93,21 +93,7 @@ public class DrawMap {
     g.setColor(Color.GREEN);
     g.drawString("Level: " + level, 90, 50);
   }
-  
-  /** redraws the spaces in the world
-   * 
-   * @param Graphics
-   * @return N/A
-   */
-  public void redraw(Graphics g) {
-    // re-draw the blocks
-    for (Block b : blocks) {
-      if (b.getType() == '0') {
-        b.draw(g);
-      }
-    }
-  }
-  
+   
   /**
    * returns an array of the blocks
    * 
