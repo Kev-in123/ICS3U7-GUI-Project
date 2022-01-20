@@ -89,6 +89,9 @@ public class DrawMap {
     for (Block b : blocks) {
       b.draw(g);
     }
+    // display the level in the corner
+    g.setColor(Color.GREEN);
+    g.drawString("Level: " + level, 90, 50);
   }
 
   /**
