@@ -1,3 +1,9 @@
+/**
+ * @author Kevin Cai, Ayman Farhad
+ * 
+ * last updated: 2022-01-20
+ */
+
 package Main;
 
 import java.io.*;
