@@ -1,9 +1,3 @@
-/**
- * @author Kevin Cai
- * 
- * last updated: 2022-01-20
- */
-
 package Game;
 
 import java.io.*;
@@ -11,6 +5,11 @@ import java.awt.*;
 
 import Levels.*;
 
+/**
+ * @author Kevin Cai
+ * 
+ * last updated: 2022-01-21
+ */
 public class DrawMap {
   // variables used throughout the class
   Block[] blocks;
@@ -51,7 +50,7 @@ public class DrawMap {
   /**
    * loads the world
    * 
-   * @param int
+   * @param level
    * @return N/A
    */
   public String[] load_level(int level) {
@@ -66,7 +65,7 @@ public class DrawMap {
   /**
    * draws the world
    * 
-   * @param Graphics
+   * @param g
    * @return N/A
    */
   public void draw_world(Graphics g) {

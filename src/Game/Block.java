@@ -1,13 +1,12 @@
-/**
- * @author Kevin Cai, Ayman Farhad
- * 
- * last updated: 2022-01-20  
- */
-
 package Game;
 
 import java.awt.*;
 
+/**
+ * @author Kevin Cai, Ayman Farhad
+ * 
+ * last updated: 2022-01-21  
+ */
 public class Block {
   // variables used throughout the class
   private int xpos;
@@ -27,7 +26,7 @@ public class Block {
    * returns the block's x position
    * 
    * @param N/A
-   * @return xpos
+   * @return the block's xpos
    */
   public int getXPos() {
     return this.xpos;
@@ -37,7 +36,7 @@ public class Block {
    * returns the block's y position
    * 
    * @param N/A
-   * @return ypos
+   * @return the block's ypos
    */
   public int getYPos() {
     return this.ypos;
@@ -47,7 +46,7 @@ public class Block {
    * returns the block's width
    * 
    * @param N/A
-   * @return width
+   * @return the block's width
    */
   public int getWidth() {
     return this.width;
@@ -57,7 +56,7 @@ public class Block {
    * returns the block's height
    * 
    * @param N/A
-   * @return height
+   * @return the block's height
    */
   public int getHeight() {
     return this.height;
@@ -67,7 +66,7 @@ public class Block {
    * returns the block's ytpye
    * 
    * @param N/A
-   * @return type
+   * @return the block's type
    */
   public char getType() {
     return this.type;
@@ -77,7 +76,7 @@ public class Block {
    * get the blocks bounds
    * 
    * @param N/A
-   * @return Rectangle
+   * @return a rectanble representing the boundaries of the block
    */
   public Rectangle getBounds() {
     return new Rectangle(xpos, ypos, width, height);
@@ -86,7 +85,7 @@ public class Block {
   /**
    * draws the block
    * 
-   * @param Graphics g
+   * @param g
    * @return N/A
    */
   public void draw(Graphics g) {

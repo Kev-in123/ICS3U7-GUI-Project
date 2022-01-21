@@ -1,14 +1,13 @@
-/**
- * @author Kevin Cai, Ayman Farhad
- * 
- * last updated: 2022-01-20
- */
-
 package Main;
 
 import java.awt.*;
 import javax.swing.*;
 
+/**
+ * @author Kevin Cai, Ayman Farhad
+ * 
+ * last updated: 2022-01-21
+ */
 public class How extends JPanel {
 
   How() {

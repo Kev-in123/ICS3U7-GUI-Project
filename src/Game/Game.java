@@ -1,14 +1,13 @@
-/**
- * @author Kevin Cai
- * 
- * last updated: 2022-01-20
- */
-
 package Game;
 
 import java.awt.*;
 import javax.swing.*;
 
+/**
+ * @author Kevin Cai
+ * 
+ * last updated: 2022-01-21
+ */
 public class Game implements Runnable {
   Player player;
   DrawMap draw;

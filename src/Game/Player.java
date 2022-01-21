@@ -1,9 +1,3 @@
-/**
- * @author Kevin Cai, Ayman Farhad
- * 
- * last updated: 2022-01-20
- */
-
 package Game;
 
 import java.io.*;
@@ -11,6 +5,11 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.sound.sampled.*;
 
+/**
+ * @author Kevin Cai, Ayman Farhad
+ * 
+ * last updated: 2022-01-21
+ */
 public class Player implements KeyListener {
   // variables used throughout the class
   private int height = 30;

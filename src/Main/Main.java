@@ -1,9 +1,3 @@
-/**
- * @author Kevin Cai, Ayman Farhad
- * 
- * last updated: 2022-01-20
- */
-
 package Main;
 
 import java.io.*;
@@ -15,6 +9,11 @@ import javax.sound.sampled.*;
 
 import Game.*;
 
+/**
+ * @author Kevin Cai, Ayman Farhad
+ * 
+ * last updated: 2022-01-21
+ */
 public class Main extends JFrame {
   // declare the game page and the how to play page
   Game game;
