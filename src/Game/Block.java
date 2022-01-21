@@ -118,8 +118,8 @@ public class Block {
       // draw a rectangle for the background
       g.setColor(Color.WHITE);
       g.fillRect(this.xpos, this.ypos, width, height);
+      // draws the portal
       g.setColor(color);
-      // draws a circle
       g.fillOval(this.xpos + 5, this.ypos, 20, 30);
       g.setColor(Color.DARK_GRAY);
       g.fillOval(this.xpos+7, this.ypos+2, 16, 26);
