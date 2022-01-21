@@ -210,6 +210,7 @@ public class Player implements KeyListener {
     // reset the location of the player
     xpos = startx;
     ypos = starty;
+    xvel = 0;
     yvel = 0;
     paint();
   }
