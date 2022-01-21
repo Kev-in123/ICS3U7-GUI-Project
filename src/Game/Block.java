@@ -99,8 +99,6 @@ public class Block {
         color = Color.DARK_GRAY;
       } else if (this.type == '0') {
         color = Color.WHITE;
-      } else if (this.type == 'c') {
-        color = Color.YELLOW;
       }
     }
     // if the type is a spike
@@ -113,16 +111,6 @@ public class Block {
       int[] xpoints = { this.xpos + 15, this.xpos + 30, this.xpos };
       int[] ypoints = { this.ypos, this.ypos + 30, this.ypos + 30 };
       g.fillPolygon(xpoints, ypoints, 3);
-      return;
-    }
-    // if the type is a coin
-    if (this.type == 'c') {
-      // draw a rectangle for the background
-      g.setColor(Color.WHITE);
-      g.fillRect(this.xpos, this.ypos, width, height);
-      g.setColor(color);
-      // draws a circle
-      g.fillOval(this.xpos, this.ypos, 30, 30);      
       return;
     }
     // if the type is a portal

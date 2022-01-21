@@ -159,7 +159,7 @@ public class Player implements KeyListener {
    */
   void collision() {
     for (Block b : blocks) {
-      if (b.getType() == '0' || b.getType() == 'c') {
+      if (b.getType() == '0') {
         continue;
       }
       if (getBounds1().intersects(b.getBounds())) {
