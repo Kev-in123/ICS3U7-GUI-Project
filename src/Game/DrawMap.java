@@ -8,7 +8,9 @@ import Levels.*;
 /**
  * @author Kevin Cai
  * 
- * last updated: 2022-01-21
+ * last updated: 2022-01-22
+ *
+ * DrawMap class: draws the map
  */
 public class DrawMap {
   // variables used throughout the class
