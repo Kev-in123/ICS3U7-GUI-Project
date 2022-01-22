@@ -36,7 +36,7 @@ public class Game implements Runnable {
     Thread t = Thread.currentThread();
     while (t == gameloop) {
       try {
-        Thread.sleep(1000 / 30);
+        Thread.sleep(1000 / 25);
       } catch (InterruptedException e) {
         e.printStackTrace();
       }
