@@ -5,7 +5,9 @@ import java.awt.*;
 /**
  * @author Kevin Cai, Ayman Farhad
  * 
- * last updated: 2022-01-21  
+ * last updated: 2022-01-22
+ *
+ * Block class: contains all the blocks and elements in the game
  */
 public class Block {
   // variables used throughout the class
