@@ -13,6 +13,8 @@ import Game.*;
  * @author Kevin Cai, Ayman Farhad
  * 
  * last updated: 2022-01-21
+ *
+ * Main class: main menu
  */
 public class Main extends JFrame {
   // declare the game page and the how to play page
