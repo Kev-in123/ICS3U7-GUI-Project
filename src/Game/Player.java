@@ -214,7 +214,6 @@ public class Player implements KeyListener {
     ypos = starty;
     xvel = 0;
     yvel = 0;
-    paint();
   }
 
   /**
