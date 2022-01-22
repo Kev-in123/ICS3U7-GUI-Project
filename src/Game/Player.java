@@ -70,16 +70,16 @@ public class Player implements KeyListener {
    * @return N/A
    */ 
     static void playSoundEffect2() {
-	    File file = new File("Assets/mixkit-electronic-retro-block-hit-2185.wav");
-	    try {
-	      AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
-	      Clip clip = AudioSystem.getClip();
-	      clip.open(audioStream);
-	      clip.start();
-	    } catch (Exception e) {
-	      e.printStackTrace();
-	    }
-	  }
+      File file = new File("Assets/mixkit-electronic-retro-block-hit-2185.wav");
+      try {
+        AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
+        Clip clip = AudioSystem.getClip();
+        clip.open(audioStream);
+        clip.start();
+      } catch (Exception e) {
+	e.printStackTrace();
+      }
+    }
   
   /**
    * sound effect for jumping
@@ -88,16 +88,16 @@ public class Player implements KeyListener {
    * @return N/A
    */
   static void playSoundEffect3() {
-	    File file = new File("Assets/Video game jump Sound Effect.wav");
-	    try {
-	      AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
-	      Clip clip = AudioSystem.getClip();
-	      clip.open(audioStream);
-	      clip.start();
-	    } catch (Exception e) {
-	      e.printStackTrace();
-	    }
-	  }
+    File file = new File("Assets/Video game jump Sound Effect.wav");
+    try {
+      AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
+      Clip clip = AudioSystem.getClip();
+      clip.open(audioStream);
+      clip.start();
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+  }
 
   /**
    * draws the player
