@@ -6,7 +6,9 @@ import javax.swing.*;
 /**
  * @author Kevin Cai
  * 
- * last updated: 2022-01-21
+ * last updated: 2022-01-22
+ *
+ * Game class: includes the game loop
  */
 public class Game implements Runnable {
   Player player;
