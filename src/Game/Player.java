@@ -196,7 +196,6 @@ public class Player implements KeyListener {
         } else if (yvel < 0) {
           yvel = 0;
           ypos = b.getYPos() + b.getHeight();
-          jumping = false;
         }
       }
     }
