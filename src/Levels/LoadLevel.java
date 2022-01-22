@@ -6,6 +6,8 @@ import java.io.*;
  * @author Kevin Cai
  * 
  * last updated: 2022-01-21
+ * 
+ * LoadLevel class: loads the levels into cache
  */
 public class LoadLevel {
 
