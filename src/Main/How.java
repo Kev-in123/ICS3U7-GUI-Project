@@ -6,7 +6,9 @@ import javax.swing.*;
 /**
  * @author Kevin Cai, Ayman Farhad
  * 
- * last updated: 2022-01-21
+ * last updated: 2022-01-22
+ *
+ * Hoe class: "How to Play" page of the game
  */
 public class How extends JPanel {
 
