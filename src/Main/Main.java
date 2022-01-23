@@ -97,7 +97,6 @@ public class Main extends JFrame {
       requestFocusInWindow();
       // initialize the game, paint it, and add the listeners
       game = new Game(Main.this, g);
-      game.paint();
       game.addListeners();
     });
 
