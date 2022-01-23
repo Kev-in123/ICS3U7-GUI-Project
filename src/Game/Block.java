@@ -5,7 +5,7 @@ import java.awt.*;
 /**
  * @author Kevin Cai, Ayman Farhad
  * 
- * last updated: 2022-01-22
+ * last updated: 2022-01-23
  *
  * Block class: contains all the blocks and elements in the game
  */
@@ -27,7 +27,6 @@ public class Block {
   /**
    * returns the block's x position
    * 
-   * @param N/A
    * @return the block's xpos
    */
   public int getXPos() {
@@ -37,7 +36,6 @@ public class Block {
   /**
    * returns the block's y position
    * 
-   * @param N/A
    * @return the block's ypos
    */
   public int getYPos() {
@@ -47,7 +45,6 @@ public class Block {
   /**
    * returns the block's width
    * 
-   * @param N/A
    * @return the block's width
    */
   public int getWidth() {
@@ -57,7 +54,6 @@ public class Block {
   /**
    * returns the block's height
    * 
-   * @param N/A
    * @return the block's height
    */
   public int getHeight() {
@@ -67,7 +63,6 @@ public class Block {
   /**
    * returns the block's ytpye
    * 
-   * @param N/A
    * @return the block's type
    */
   public char getType() {
@@ -77,7 +72,6 @@ public class Block {
   /**
    * get the blocks bounds
    * 
-   * @param N/A
    * @return a rectanble representing the boundaries of the block
    */
   public Rectangle getBounds() {
@@ -88,7 +82,6 @@ public class Block {
    * draws the block
    * 
    * @param g
-   * @return N/A
    */
   public void draw(Graphics g) {
     Color color = Color.BLACK;
