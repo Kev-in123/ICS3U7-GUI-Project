@@ -48,8 +48,6 @@ public class Player implements KeyListener {
   /**
    * sound effect entering a portal
    *
-   * @param N/A
-   * @return N/A
    */
     static void playSoundEffect() {
 	    File file = new File("Assets/Video-Game-Power-Level-Up-A2-Fast.wav");
@@ -66,8 +64,6 @@ public class Player implements KeyListener {
   /**
    * sound effect for hitting a spike or lava
    *
-   * @param N/A
-   * @return N/A
    */ 
     static void playSoundEffect2() {
       File file = new File("Assets/mixkit-electronic-retro-block-hit-2185.wav");
@@ -84,8 +80,6 @@ public class Player implements KeyListener {
   /**
    * sound effect for jumping
    *
-   * @param N/A
-   * @return N/A
    */
   static void playSoundEffect3() {
     File file = new File("Assets/Video game jump Sound Effect.wav");
@@ -102,8 +96,6 @@ public class Player implements KeyListener {
   /**
    * draws the player
    * 
-   * @param N/A
-   * @return N/A
    */
   public void draw() {
     Graphics2D g2 = (Graphics2D) g;
@@ -128,7 +120,6 @@ public class Player implements KeyListener {
   /**
    * collision detection for the x boundaries of the palyer
    *
-   * @param N/A
    * @return Rectangle
    */
   public Rectangle getBounds1() {
@@ -142,7 +133,6 @@ public class Player implements KeyListener {
   /**
    * collision detection for the y boundaries of the palyer
    *
-   * @param N/A
    * @return Rectangle
    */
   public Rectangle getBounds2() {
@@ -156,7 +146,6 @@ public class Player implements KeyListener {
   /**
    * collision detection to the x & y boundaries of the player
    *
-   * @param N/A
    * @return Rectangle
    */
   void collision() {
@@ -204,8 +193,6 @@ public class Player implements KeyListener {
   /**
    * respwans the player
    * 
-   * @param N/A
-   * @return N/A
    */
   public void respwan() {
     // reset the location of the player
@@ -219,7 +206,6 @@ public class Player implements KeyListener {
    * updates the level in the text file
    * 
    * @param String
-   * @return N/A
    */
   public void setLevel(String level) {
     try {
@@ -235,8 +221,6 @@ public class Player implements KeyListener {
   /**
    * updates the level
    * 
-   * @param N/A
-   * @return N/A
    */
   public void nextLevel() {
     ++level;
@@ -259,8 +243,6 @@ public class Player implements KeyListener {
   /**
    * used for smoother animations
    * 
-   * @param N/A
-   * @return N/A
    */
   public void tick() {
     xpos += xvel;
@@ -275,7 +257,6 @@ public class Player implements KeyListener {
    * called when a key is pressed
    * 
    * @param KeyEvent
-   * @return N/A
    */
   @Override
   public void keyPressed(KeyEvent key) {
@@ -302,7 +283,6 @@ public class Player implements KeyListener {
    * called when a key is released
    * 
    * @param KeyEvent
-   * @return N/A
    */
   @Override
   public void keyReleased(KeyEvent key) {
@@ -325,7 +305,6 @@ public class Player implements KeyListener {
    * called when a key is typed
    * 
    * @param KeyEvent
-   * @return N/A
    */
   @Override
   public void keyTyped(KeyEvent key) {
