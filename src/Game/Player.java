@@ -8,7 +8,7 @@ import javax.sound.sampled.*;
 /**
  * @author Kevin Cai, Ayman Farhad
  * 
- * last updated: 2022-01-22
+ * last updated: 2022-01-23
  *
  * Player class: contains the player class
  */
