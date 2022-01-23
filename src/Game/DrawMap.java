@@ -8,7 +8,7 @@ import Levels.*;
 /**
  * @author Kevin Cai
  * 
- * last updated: 2022-01-22
+ * last updated: 2022-01-23
  *
  * DrawMap class: draws the map
  */
@@ -25,7 +25,6 @@ public class DrawMap {
   /**
    * gets the level
    * 
-   * @param N/A
    * @return int
    */
   public static int getLevel() {
@@ -53,7 +52,6 @@ public class DrawMap {
    * loads the world
    * 
    * @param level
-   * @return N/A
    */
   public String[] load_level(int level) {
     // create a LoadLevel instance
@@ -68,7 +66,6 @@ public class DrawMap {
    * draws the world
    * 
    * @param g
-   * @return N/A
    */
   public void draw_world(Graphics g) {
     // get the level
@@ -105,7 +102,6 @@ public class DrawMap {
    * re-draws the empty spaces in the world, used to reduce the amount of blocks drawn per tick
    * 
    * @param g
-   * @return N/A
    */
   public void redraw(Graphics g) {
     for (Block b : blocks) {
@@ -116,8 +112,7 @@ public class DrawMap {
   /**
    * returns an array of the blocks
    * 
-   * @param N/A
-   * @return N/A
+   * @return the blocks
    */
   public Block[] getBlocks() {
     return blocks;
