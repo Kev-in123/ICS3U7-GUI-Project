@@ -102,6 +102,18 @@ public class DrawMap {
   }
    
   /**
+   * re-draws the empty spaces in the world, used to reduce the amount of blocks drawn per tick
+   * 
+   * @param g
+   * @return N/A
+   */
+  public void redraw(Graphics g) {
+    for (Block b : blocks) {
+      if (b.getType() =='0') b.draw(g);
+    }
+  }
+
+  /**
    * returns an array of the blocks
    * 
    * @param N/A

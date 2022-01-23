@@ -105,7 +105,7 @@ public class Player implements KeyListener {
    * @param N/A
    * @return N/A
    */
-  public void paint() {
+  public void draw() {
     Graphics2D g2 = (Graphics2D) g;
     // sets the color of the player
     g2.setColor(Color.BLUE);
@@ -166,7 +166,7 @@ public class Player implements KeyListener {
       }
       if (getBounds1().intersects(b.getBounds())) {
         if (b.getType() == 's' || b.getType() == 'l') {
-	  playSoundEffect2(); 
+	        playSoundEffect2(); 
           respwan();
         } else if (b.getType() == 'p') {
           playSoundEffect();

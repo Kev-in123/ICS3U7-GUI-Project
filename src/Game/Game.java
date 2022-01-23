@@ -43,7 +43,7 @@ public class Game implements Runnable {
         e.printStackTrace();
       }
       player.tick();
-      paint();
+      draw();
     }
   }
 
@@ -53,9 +53,9 @@ public class Game implements Runnable {
    * @param N/A
    * @return N/A
    */
-  public void paint() {
-    draw.draw_world(graphics);
-    player.paint();
+  public void draw() {
+    draw.redraw(graphics);
+    player.draw();
   }
 
   /**
