@@ -283,12 +283,15 @@ public class Player implements KeyListener {
       playSoundEffect3();
       yvel = -15;
       jumping = true;
-    } else if (keyCode == KeyEvent.VK_DOWN || keyCode == 'S') {
+    }
+    if (keyCode == KeyEvent.VK_DOWN || keyCode == 'S') {
       yvel = 10;
-    } else if (keyCode == KeyEvent.VK_LEFT || keyCode == 'A') {
+    }
+    if (keyCode == KeyEvent.VK_LEFT || keyCode == 'A') {
       xvel = -10;
       direction = -1;
-    } else if (keyCode == KeyEvent.VK_RIGHT || keyCode == 'D') {
+    } 
+    if (keyCode == KeyEvent.VK_RIGHT || keyCode == 'D') {
       xvel = 10;
       direction = 1;
     }
@@ -305,8 +308,6 @@ public class Player implements KeyListener {
     int keyCode = key.getKeyCode();
     if ((keyCode == KeyEvent.VK_UP || keyCode == 'W') && !jumping) {
       yvel = 0;
-    } else if (keyCode == KeyEvent.VK_DOWN || keyCode == 'S') {
-      yvel = 0;
     }
     if (keyCode == KeyEvent.VK_LEFT || keyCode == 'A') {
       xvel = 0;
@@ -314,7 +315,6 @@ public class Player implements KeyListener {
     if (keyCode == KeyEvent.VK_RIGHT || keyCode == 'D') {
       xvel = 0;
     }
-
   }
 
   // not used
