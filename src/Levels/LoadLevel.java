@@ -5,7 +5,7 @@ import java.io.*;
 /**
  * @author Kevin Cai
  * 
- * last updated: 2022-01-22
+ * last updated: 2022-01-23
  * 
  * LoadLevel class: loads the levels into cache
  */
@@ -38,7 +38,6 @@ public class LoadLevel {
   /**
    * returns the layout of all the levels in an array
    * 
-   * @param N/A
    * @return the files as an array of strings
    */
   public String[][] getLevels() {
