@@ -6,7 +6,7 @@ import javax.swing.*;
 /**
  * @author Kevin Cai
  * 
- * last updated: 2022-01-22
+ * last updated: 2022-01-23
  *
  * Game class: includes the game loop
  */
@@ -31,8 +31,6 @@ public class Game implements Runnable {
   /**
    * game loop
    * 
-   * @param N/A
-   * @return N/A
    */
   public void run() {
     Thread t = Thread.currentThread();
@@ -50,8 +48,6 @@ public class Game implements Runnable {
   /**
    * Used to draw the world
    * 
-   * @param N/A
-   * @return N/A
    */
   public void draw() {
     draw.redraw(graphics);
@@ -61,8 +57,6 @@ public class Game implements Runnable {
   /**
    * Used to add the listeners
    * 
-   * @param N/A
-   * @return N/A
    */
   public void addListeners() {
     frame.addKeyListener(player);
