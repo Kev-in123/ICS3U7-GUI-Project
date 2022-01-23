@@ -239,7 +239,7 @@ public class Player implements KeyListener {
    * @return N/A
    */
   public void nextLevel() {
-    setLevel(Integer.toString(++level));
+    ++level;
     if (level == 11) {
       // go back to the main menu
       Game.frame.dispose();
@@ -250,6 +250,7 @@ public class Player implements KeyListener {
         e.printStackTrace();
       }
     }
+    setLevel(Integer.toString(level));
     draw.draw_world(g);
     blocks = draw.getBlocks();
     respwan();
