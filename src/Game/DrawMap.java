@@ -57,6 +57,7 @@ public class DrawMap {
    * loads the world
    * 
    * @param level - the level to load
+   * @return the level the user is on
    */
   public String[] load_level(int level) {
     // create a LoadLevel instance
