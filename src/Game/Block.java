@@ -78,7 +78,7 @@ public class Block {
   /**
    * get the blocks bounds
    * 
-   * @return a rectanble representing the boundaries of the block
+   * @return a rectangle representing the boundaries of the block
    */
   public Rectangle getBounds() {
     return new Rectangle(xpos, ypos, width, height);
