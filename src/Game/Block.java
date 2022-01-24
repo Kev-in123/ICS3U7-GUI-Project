@@ -17,7 +17,13 @@ public class Block {
   private int width = 30;
   private int height = 30;
 
-  // constructor, used to determine the position, size, and type of the platform
+ /**
+   * The Block constructor - Creates a new block
+   *
+   * @param x - the x position of the block
+   * @param y - the y position of the block
+   * @param type - the type of the block
+   */
   Block(int x, int y, char type) {
     this.xpos = x;
     this.ypos = y;
@@ -25,7 +31,7 @@ public class Block {
   }
 
   /**
-   * returns the block's x position
+   * gets the block's x position
    * 
    * @return the block's xpos
    */
@@ -34,7 +40,7 @@ public class Block {
   }
 
   /**
-   * returns the block's y position
+   * gets the block's y position
    * 
    * @return the block's ypos
    */
@@ -43,7 +49,7 @@ public class Block {
   }
 
   /**
-   * returns the block's width
+   * gets the block's width
    * 
    * @return the block's width
    */
@@ -52,7 +58,7 @@ public class Block {
   }
 
   /**
-   * returns the block's height
+   * gets the block's height
    * 
    * @return the block's height
    */
@@ -61,7 +67,7 @@ public class Block {
   }
 
   /**
-   * returns the block's ytpye
+   * gets the block's ytpye
    * 
    * @return the block's type
    */
@@ -81,7 +87,7 @@ public class Block {
   /**
    * draws the block
    * 
-   * @param g
+   * @param g - the instance of the graphics class
    */
   public void draw(Graphics g) {
     Color color = Color.BLACK;
