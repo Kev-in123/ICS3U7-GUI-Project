@@ -28,6 +28,7 @@ public class Main extends JFrame {
    * The Main constructor
    *
    * @param is_user - whether the constructor was called in the main method or not
+   * @throws IOException - if the file cannot be read
    */
   public Main(boolean is_user) throws IOException {
     // set the window size
