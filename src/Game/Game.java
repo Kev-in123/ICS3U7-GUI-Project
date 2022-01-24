@@ -17,7 +17,12 @@ public class Game implements Runnable {
   static JFrame frame;
   Thread gameloop;
 
-  // Constructor
+  /**
+   * The Game constructor
+   *
+   * @param f - the main frame
+   * @param g - the instance of the graphics class
+   */
   public Game(JFrame f, Graphics g) {
     frame = f;
     graphics = g;
