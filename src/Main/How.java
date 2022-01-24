@@ -6,13 +6,16 @@ import javax.swing.*;
 /**
  * @author Kevin Cai, Ayman Farhad
  * 
- * last updated: 2022-01-22
+ * last updated: 2022-01-23
  *
  * Hoe class: "How to Play" page of the game
  */
 public class How extends JPanel {
 
-  How() {
+  /**
+   * The "How to Play" constructor
+   */
+  How () {
     // set the bounds and colour of the how to play page
     setBounds(100, 75, 500, 500);
     setBackground(new Color(0, 0, 128));
