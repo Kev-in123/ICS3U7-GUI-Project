@@ -17,6 +17,11 @@ public class DrawMap {
   Block[] blocks;
   int level;
 
+  /**
+   * The Map constructor
+   *
+   * @param g - the instance of the graphics class
+   */
   DrawMap(Graphics g) {
     draw_world(g);
   }
@@ -25,7 +30,7 @@ public class DrawMap {
   /**
    * gets the level
    * 
-   * @return int
+   * @return the level the user is on
    */
   public static int getLevel() {
     // initialize the level to 0
@@ -51,7 +56,7 @@ public class DrawMap {
   /**
    * loads the world
    * 
-   * @param level
+   * @param level - the level to load
    */
   public String[] load_level(int level) {
     // create a LoadLevel instance
@@ -65,7 +70,7 @@ public class DrawMap {
   /**
    * draws the world
    * 
-   * @param g
+   * @param g - the instance of the graphics class
    */
   public void draw_world(Graphics g) {
     // get the level
@@ -101,7 +106,7 @@ public class DrawMap {
   /**
    * re-draws the empty spaces in the world, used to reduce the amount of blocks drawn per tick
    * 
-   * @param g
+   * @param g - the instance of the graphics class
    */
   public void redraw(Graphics g) {
     for (Block b : blocks) {
