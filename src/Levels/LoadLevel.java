@@ -14,7 +14,7 @@ public class LoadLevel {
   /**
    * reads a text file to make the code cleaner
    * 
-   * @param String
+   * @param file_name - the file name
    * @return the file as a string
    */
   private static String readFile(String file_name) {
