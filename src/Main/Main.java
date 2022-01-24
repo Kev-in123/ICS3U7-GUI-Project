@@ -12,7 +12,7 @@ import Game.*;
 /**
  * @author Kevin Cai, Ayman Farhad
  * 
- * last updated: 2022-01-21
+ * last updated: 2022-01-23
  *
  * Main class: main menu
  */
@@ -24,7 +24,11 @@ public class Main extends JFrame {
   public static int WIDTH = 720;
   public static int HEIGHT = 720;
 
-  // constructor
+  /**
+   * The Main constructor
+   *
+   * @param is_user - whether the constructor was called in the main method or not
+   */
   public Main(boolean is_user) throws IOException {
     // set the window size
     setSize(WIDTH, HEIGHT);
@@ -179,9 +183,6 @@ public class Main extends JFrame {
 
   /**
    * Plays a sound when a button is clicked
-   *
-   * @param N/A
-   * @return N/A
    */
   static void playSoundEffect() {
     File file = new File("Assets/mixkit-video-game-retro-click-237.wav");
