@@ -236,6 +236,7 @@ public class Player implements KeyListener {
       try {
         new Main.Main(false);
         setLevel("1");
+	return;
       } catch (IOException e) {
         e.printStackTrace();
       }
