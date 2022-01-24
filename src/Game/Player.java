@@ -230,7 +230,7 @@ public class Player implements KeyListener {
    */
   public void nextLevel() {
     ++level;
-    if (level == 11) {
+    if (level == 12) {
       // go back to the main menu
       Game.frame.dispose();
       try {
