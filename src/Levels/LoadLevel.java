@@ -44,8 +44,8 @@ public class LoadLevel {
     String[] files;
     File f = new File("Levels/");
     files = f.list();
-    String[][] levels = new String[10][400];
-    for (int i = 0; i < 10; i++) {
+    String[][] levels = new String[11][400];
+    for (int i = 0; i < 11; i++) {
       levels[i] = readFile("Levels/" + files[i]).split(" ");
     }
     return levels;
