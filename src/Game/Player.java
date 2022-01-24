@@ -30,6 +30,13 @@ public class Player implements KeyListener {
   DrawMap draw;
   
 
+	
+  /**
+   * The Player constructor - Creates the player instance
+   * 
+   * @param gr - the instance of the graphics class
+   * @param d - an instance of the DrawMap class to get the blocks (collision detection)
+   */
   public Player(Graphics gr, DrawMap d) {
     blocks = d.getBlocks();
     draw = d;
@@ -120,7 +127,7 @@ public class Player implements KeyListener {
   /**
    * collision detection for the x boundaries of the palyer
    *
-   * @return Rectangle
+   * @return a rectangle representing the player's (x) boundaries
    */
   public Rectangle getBounds1() {
     int bx = xpos + xvel;
@@ -133,7 +140,7 @@ public class Player implements KeyListener {
   /**
    * collision detection for the y boundaries of the palyer
    *
-   * @return Rectangle
+   * @return a rectangle representing the player's (y) boundaries
    */
   public Rectangle getBounds2() {
     int bx = xpos + 2;
@@ -146,7 +153,6 @@ public class Player implements KeyListener {
   /**
    * collision detection to the x & y boundaries of the player
    *
-   * @return Rectangle
    */
   void collision() {
     for (Block b : blocks) {
@@ -205,7 +211,7 @@ public class Player implements KeyListener {
   /**
    * updates the level in the text file
    * 
-   * @param String
+   * @param level - the level number to set
    */
   public void setLevel(String level) {
     try {
@@ -256,7 +262,7 @@ public class Player implements KeyListener {
   /**
    * called when a key is pressed
    * 
-   * @param KeyEvent
+   * @param key - a key event, in this case, key pressed
    */
   @Override
   public void keyPressed(KeyEvent key) {
@@ -282,7 +288,7 @@ public class Player implements KeyListener {
   /**
    * called when a key is released
    * 
-   * @param KeyEvent
+   * @param key - a key event, in this case, key released
    */
   @Override
   public void keyReleased(KeyEvent key) {
@@ -304,7 +310,7 @@ public class Player implements KeyListener {
   /**
    * called when a key is typed
    * 
-   * @param KeyEvent
+   * @param key - a key event, in this case, key typed
    */
   @Override
   public void keyTyped(KeyEvent key) {
