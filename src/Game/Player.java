@@ -8,7 +8,7 @@ import javax.sound.sampled.*;
 /**
  * @author Kevin Cai, Ayman Farhad
  * 
- * last updated: 2022-01-23
+ * last updated: 2022-01-26
  *
  * Player class: contains the player class
  */
@@ -161,7 +161,7 @@ public class Player implements KeyListener {
       }
       if (getBounds1().intersects(b.getBounds())) {
         if (b.getType() == 's' || b.getType() == 'l') {
-	        playSoundEffect2(); 
+	  playSoundEffect2(); 
           respwan();
         } else if (b.getType() == 'p') {
           playSoundEffect();
