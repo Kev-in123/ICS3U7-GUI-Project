@@ -255,8 +255,6 @@ public class Player implements KeyListener {
     xpos += xvel;
     ypos += yvel;
     collision();
-    if (ypos >= 690)
-      return;
     ++yvel;
   }
 
